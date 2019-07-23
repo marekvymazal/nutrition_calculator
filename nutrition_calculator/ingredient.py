@@ -6,11 +6,20 @@ import html5lib
 
 from .data_object import DataObject
 
+import pandas as pd
+
 class Ingredient(DataObject):
 
     unit_names = ['cup','tbsp','tsp']
     unit_up = [1, 16, 3]
     unit_down = [1, .0625, 0.3333]
+
+    nutrient_list = {
+        "Energy":{'id':'calories'},
+        "Total lipid (fat)":{'id':'fat'},
+        "Protien":{'id':'protien'},
+        "Carbohydrate, by difference":{'id':'carbs'}
+    }
 
     def __init__(self, amount, unit, name):
 
@@ -118,66 +127,104 @@ class Ingredient(DataObject):
 
     def process_item(self):
 
-        file_name = self.name + '.html'
+        from .nutrition_calculator import NutritionCalculator as NC
+
+        file_name = self.name + '.csv'
         data_file = None
 
-        for dirpath, dirnames, filenames in os.walk("raw"):
-            for _filename in [f for f in filenames if f.endswith(".html")]:
+        for dirpath, dirnames, filenames in os.walk(NC.local_data):
+            for _filename in [f for f in filenames if f.endswith('.csv')]:
                 if _filename == file_name:
                     data_file = os.path.join(dirpath, file_name)
 
-        html_file = open( data_file, encoding='utf-8', errors='replace', mode='r' )
-        html_text = html_file.read()
-        html_file.close()
+        if NC.debug:
+            print(data_file)
 
-        # make pretty html first
-        soup = BeautifulSoup(html_text, 'html5lib')
-        prettyHTML = soup.prettify()
-        soup = BeautifulSoup(prettyHTML, 'html5lib')
+        if data_file == None:
+            raise ValueError("could not find data file for " + self.name )
 
-        if soup == None and final_url == None:
-            return False
+        unit_map = {}
 
-        content = soup.find("fieldset", { "id" : "nutrition-info-container" })
+        # custom csv parser
+        data = open(data_file, encoding='utf-8', errors='replace', mode='r')
 
-        # Get serving
-        serving = content.find("span", {"id" : "servingsize3"})
-        #print ('Serving Size:' + serving.text.strip())
+        column_cnt = 0
 
-        # Get calories
-        calories_set = content.find("span", {"id":"NUTRIENT_0"})
-        self.calories = round(float(calories_set.text.strip())*.01*self.grams)
+        # get units
+        for line in data:
+            items = line.split(',')
 
-        carb_set = content.find("span", {"id":"NUTRIENT_1"})
-        self.cal_carbs = round(float(carb_set.text.strip())*.01*self.grams)
+            if items[0] == 'Nutrient' and items[1] == 'Unit':
+                column_cnt = len(items)-1
 
-        fat_set = content.find("span", {"id":"NUTRIENT_2"})
-        self.cal_fat = round(float(fat_set.text.strip())*.01*self.grams)
+                if NC.debug:
+                    print('  columns=' + str(column_cnt))
 
-        protien_set = content.find("span", {"id":"NUTRIENT_3"})
-        self.cal_protien = round(float(protien_set.text.strip())*.01*self.grams)
+                for i in range(2, len(items)):
+                    s = items[i].replace('"','')
+                    if s in [None,'','Data points','Std. Error']:
+                        continue
 
-        # Carbs
-        carb_set = content.find("span", {"id":"NUTRIENT_4"})
-        self.carbs = round(float(carb_set.text.strip())*.01*self.grams)
+                    if NC.debug:
+                        print(s)
 
+                    if s == '1Value per 100 g':
+                        unit_map['100g'] = i
 
-        # Fats
-        fat_set = content.find("span", {"id":"NUTRIENT_14"})
-        self.fat = round(float(fat_set.text.strip())*.01*self.grams)
+                    elif s.startswith('1 cup'):
+                        unit_map['1 cup'] = i
 
+                    else:
+                        if '=' in s:
+                            unit = s.split('=')[0].strip().lower()
+                            if unit.startswith('1 '):
+                                unit = unit[2:].lower()
+                                unit_map[unit] = i
+                        #else:
+                        #    unit_map[s.lower()] = i
 
-        # Protiens
-        protien_set = content.find("span", {"id":"NUTRIENT_77"})
-        protien_units_set = content.find("span", {"id":"UNIT_NUTRIENT_77"})
-        self.protien = round(float(protien_set.text.strip())*.01*self.grams)
+        if NC.debug:
+            print("unit map")
+            for key, value in unit_map.items():
+                print('  ' + key + '=' + str(value))
 
+        data.close()
 
-        # Vitamins
-        #print ("Vitamins")
-        #vitamin_a_set = content.find("span", {"id":"NUTRIENT_100"})
-        #vitamin_a_units_set = content.find("span", {"id":"UNIT_NUTRIENT_100"})
+        # get values
+        data = open(data_file, encoding='utf-8', errors='replace', mode='r')
+        for line in data:
+            if line[0] != '"':
+                continue
 
-        #print ('  Vitamin A:' + vitamin_a_set.text.strip() + " " + vitamin_a_units_set.text.strip())
+            nutrient = line.split('"')[1].strip()
 
-        # Minerals
+            items = line.split('"')[2].strip().split(',')
+
+            if len(items) != column_cnt:
+                continue
+
+            if NC.debug:
+                print("      " + nutrient)
+                #print(items)
+
+                for key, value in unit_map.items():
+                    print("        " + key + '=' + str(items[value]))
+
+            # store values of 1g
+            if nutrient in Ingredient.nutrient_list:
+                #print(Ingredient.nutrient_list[nutrient]['id'])
+                #"Energy",kcal
+                id = Ingredient.nutrient_list[nutrient]['id']
+                val = float(items[unit_map['100g']]) * 0.01
+                #print('  ' + id + '=' + str(val))
+                setattr(self, id, val)
+
+        data.close()
+
+        # calculate missing data
+        if self.calories == 0:
+            self.calories += self.fat * 9
+            self.calories += self.carbs * 4
+            self.calories += self.protien * 4
+
+        return

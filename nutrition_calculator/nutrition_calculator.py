@@ -63,10 +63,24 @@ class NutritionCalculator:
         if not os.path.exists( code_file ):
             return
 
-        df = pd.read_csv(code_file, index_col=False, dtype={'NDB-code': str} )
-        for row in df.itertuples():
-            print(row[1].strip(), row[2].strip() )
-            self.get_data_from_code(row[1].strip(), filename=row[2].strip())
+        #df = pd.read_csv(code_file, index_col=False, dtype={'NDB-code': str} )
+        #for row in df.itertuples():
+        #    print(row[1].strip(), row[2].strip() )
+        #    self.get_data_from_code(row[1].strip(), filename=row[2].strip())
+
+        data = open(code_file, encoding='utf-8', mode='r')
+        for line in data:
+            if line.startswith('NDB-code'):
+                continue
+
+            items = line.split(',')
+
+            code = items[0].strip()
+            filename = items[1].strip()
+
+            # TODO: get alt names and use them
+
+            self.get_data_from_code(code, filename=filename)
 
         return
 

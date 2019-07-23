@@ -97,7 +97,7 @@ def main():
 
         if opt in ('--codes'):
             nc.get_data_from_codes( os.path.join( data_path, 'index.csv') )
-            nc.get_data_from_codes( os.path.join( nc.local_documents, 'index.csv') )
+            nc.get_data_from_codes( os.path.join( NutritionCalculator.local_documents, 'index.csv') )
             run = False
 
     # Execute
