@@ -14,6 +14,7 @@ class Ingredient(DataObject):
     unit_up = [1, 16, 3]
     unit_down = [1, .0625, 0.3333]
 
+    # this list matches items in the data csv files and then uses the id as the attribute to set
     nutrient_list = {
         "Energy":{'id':'calories'},
         "Total lipid (fat)":{'id':'fat'},

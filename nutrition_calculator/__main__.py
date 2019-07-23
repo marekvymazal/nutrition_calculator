@@ -65,7 +65,7 @@ def main():
     nc.setup()
 
     try:
-        opts, args = getopt.getopt(argv,"hir",["help","recipe=","code=","codes","debug"])
+        opts, args = getopt.getopt(argv,"hirf:",["help","recipe=","code=","filename=","codes","debug"])
 
     except getopt.GetoptError:
         print(help_str)
@@ -73,29 +73,34 @@ def main():
         return
 
     for opt, arg in opts:
-        if opt in ('--debug'):
+        if opt in ['--debug']:
             NutritionCalculator.debug = True
+
+    filename = None
+    for opt, arg in opts:
+        if opt in ['-f', '--filename']:
+            filename = arg
 
     for opt, arg in opts:
 
         print(opt, arg)
 
-        if opt in ('-h', '--help'):
+        if opt in ['-h', '--help']:
             print (help_str)
             sys.exit()
             return
 
-        if opt in ('-r','--recipe'):
+        if opt in ['-r','--recipe']:
             print('Recipe ' + arg)
             recipes.append(arg)
             run = True
 
-        if opt in ('--code'):
+        if opt in ['--code']:
             code = arg
-            nc.get_data_from_code( code )
+            nc.get_data_from_code( code, filename=filename )
             run = False
 
-        if opt in ('--codes'):
+        if opt in ['--codes']:
             nc.get_data_from_codes( os.path.join( data_path, 'index.csv') )
             nc.get_data_from_codes( os.path.join( NutritionCalculator.local_documents, 'index.csv') )
             run = False

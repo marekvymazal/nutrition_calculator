@@ -35,6 +35,10 @@ class NutritionCalculator:
         if NutritionCalculator.local_data == None:
             self.setup()
 
+        if filename == None:
+            # TODO: try get filename from code
+            pass
+
         url = "https://ndb.nal.usda.gov/ndb/foods/show/" + code + "?format=Full"
         #"https://ndb.nal.usda.gov/ndb/foods/show/08120?format=Full"
         #html = WebHTML.get_html( url )
