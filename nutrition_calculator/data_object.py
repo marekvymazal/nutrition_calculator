@@ -59,16 +59,16 @@ class DataObject:
         self.print_str = self.insert_string(self.print_str, index, str(self.name))
         index += 20
 
-        self.print_str = self.insert_string(self.print_str, index, str(self.calories))
+        self.print_str = self.insert_string(self.print_str, index, str(round(self.calories,2)))
         index += 10
 
-        self.print_str = self.insert_string(self.print_str, index, str(self.carbs))
+        self.print_str = self.insert_string(self.print_str, index, str(round(self.carbs,2)))
         index += 10
 
-        self.print_str = self.insert_string(self.print_str, index, str(self.fat))
+        self.print_str = self.insert_string(self.print_str, index, str(round(self.fat, 2)))
         index += 10
 
-        self.print_str = self.insert_string(self.print_str, index, str(self.protein))
+        self.print_str = self.insert_string(self.print_str, index, str(round(self.protein,2)))
         index += 20
 
         price_str = '{0:.2f}'.format(round(self.price, 2))

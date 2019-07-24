@@ -16,7 +16,7 @@ class Ingredient(DataObject):
 
     # this list matches items in the data csv files and then uses the id as the attribute to set
     nutrient_list = {
-        "Energy":{'id':'calories'},
+        "Energy":{'id':'calories','unit':'kcal'},
         "Total lipid (fat)":{'id':'fat'},
         "Protein":{'id':'protein'},
         "Carbohydrate, by difference":{'id':'carbs'}
@@ -211,14 +211,22 @@ class Ingredient(DataObject):
                 for key, value in unit_map.items():
                     print("        " + key + '=' + str(items[value]))
 
+            unit = items[1]
+            #print(unit)
+
             # store values of 1g
             if nutrient in Ingredient.nutrient_list:
+                if 'unit' in Ingredient.nutrient_list[nutrient]:
+                    if unit != Ingredient.nutrient_list[nutrient]['unit']:
+                        continue
+
                 #print(Ingredient.nutrient_list[nutrient]['id'])
                 #"Energy",kcal
                 id = Ingredient.nutrient_list[nutrient]['id']
                 val = float(items[unit_map['100g']]) * 0.01 * self.grams
-                #print('  ' + id + '=' + str(val))
+
                 val = round(val, 2)
+                #print('  ' + id + '=' + str(val))
                 setattr(self, id, val)
 
         data.close()
