@@ -11,6 +11,8 @@ import pandas as pd
 
 class NutritionCalculator:
 
+    module_data = None # path to modules data folder
+
     local_documents = None
     local_data = None # where per item csv files are stored
     local_recipes = None # where recipe files are stored
@@ -19,6 +21,8 @@ class NutritionCalculator:
     debug = False
 
     def __init__(self ):
+        module_path = os.path.dirname(__file__)
+        NutritionCalculator.module_data = os.path.join(module_path,'data')
         return
 
 
@@ -100,7 +104,7 @@ class NutritionCalculator:
             data.calories += recipe_data.calories
             data.carbs += recipe_data.carbs
             data.fat += recipe_data.fat
-            data.protien += recipe_data.protien
+            data.protein += recipe_data.protein
             data.price += recipe_data.price
 
         # print total

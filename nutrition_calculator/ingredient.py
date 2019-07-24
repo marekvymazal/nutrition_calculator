@@ -18,7 +18,7 @@ class Ingredient(DataObject):
     nutrient_list = {
         "Energy":{'id':'calories'},
         "Total lipid (fat)":{'id':'fat'},
-        "Protien":{'id':'protien'},
+        "Protein":{'id':'protein'},
         "Carbohydrate, by difference":{'id':'carbs'}
     }
 
@@ -216,8 +216,9 @@ class Ingredient(DataObject):
                 #print(Ingredient.nutrient_list[nutrient]['id'])
                 #"Energy",kcal
                 id = Ingredient.nutrient_list[nutrient]['id']
-                val = float(items[unit_map['100g']]) * 0.01
+                val = float(items[unit_map['100g']]) * 0.01 * self.grams
                 #print('  ' + id + '=' + str(val))
+                val = round(val, 2)
                 setattr(self, id, val)
 
         data.close()
@@ -226,6 +227,6 @@ class Ingredient(DataObject):
         if self.calories == 0:
             self.calories += self.fat * 9
             self.calories += self.carbs * 4
-            self.calories += self.protien * 4
+            self.calories += self.protein * 4
 
         return

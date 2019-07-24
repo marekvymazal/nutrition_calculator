@@ -57,25 +57,41 @@ class Recipe(DataObject):
             amount = words[0]
             words.pop(0)
 
-            # get unit
+            # find unit
             unit = None
-            found_unit = False
-
-            if len(words) == 1:
-                found_unit = True
-
-            if not found_unit:
+            if len(words) > 1:
                 for unit_type in self.unit_types:
-                    if words[0].startswith(unit_type):
+                    if words[0] in [unit_type, str(unit_type + 's')]:
                         unit = unit_type
-                        fount_unit = True
                         words.pop(0)
                         break
 
-            # get name
-            name = words[0]
-            if len(words) > 1:
-                name = '_'.join(words)
+            # get potential ingredient names
+            potential_names = []
+
+            name = '_'.join(words).lower()
+            potential_names.append(name)
+
+
+            if words[-1][-1] == 's':
+                # remove 's'
+                words[-1] = words[-1][:-1]
+                name = '_'.join(words).lower()
+                potential_names.append(name)
+            else:
+                # add 's'
+                words[-1] = words[-1]+'s'
+                name = '_'.join(words).lower()
+                potential_names.append(name)
+
+            name = self.find_ingredient( potential_names )
+            if name == None:
+                raise ValueError('could not find ingredient data for: ' + line)
+
+            if unit == None:
+                # ingredient is unit (example 1 banana, 3 vegan sausages)
+                # unit == any of potential names
+                pass
 
             if NC.debug:
                 # print info
@@ -96,7 +112,7 @@ class Recipe(DataObject):
             self.calories += ing.calories
             self.carbs += ing.carbs
             self.fat += ing.fat
-            self.protien += ing.protien
+            self.protein += ing.protein
 
             self.price += ing.price
 
@@ -106,3 +122,32 @@ class Recipe(DataObject):
 
         self.print()
         print('')
+
+
+    def find_ingredient( self, potential_names ):
+        # cross reference data files for potential names using filename and alt names
+
+        from .nutrition_calculator import NutritionCalculator as NC
+
+        code_file = os.path.join( NC.module_data, 'index.csv')
+        #nc.get_data_from_codes( os.path.join( NutritionCalculator.local_documents, 'index.csv') )
+
+        data = open(code_file, encoding='utf-8', mode='r')
+        for line in data:
+            if line.startswith('NDB-code'):
+                continue
+
+            items = line.split(',')
+
+            code = items[0].strip()
+            filename = items[1].strip()
+
+            if filename in potential_names:
+                return filename
+
+            for item in items[2:]:
+                item = item.strip().replace(' ','_')
+                if item in potential_names:
+                    return filename
+
+        data.close()

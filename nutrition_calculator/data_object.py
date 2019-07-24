@@ -15,11 +15,11 @@ class DataObject:
         self.calories = 0
         self.cal_carbs = 0
         self.cal_fat = 0
-        self.cal_protien = 0
+        self.cal_protein = 0
 
         self.carbs = 0
         self.fat = 0
-        self.protien = 0
+        self.protein = 0
 
         self.price = 0
 
@@ -39,7 +39,7 @@ class DataObject:
         self.header = self.insert_string(self.header, index, 'Fat')
         index += 10
 
-        self.header = self.insert_string(self.header, index, 'Protien')
+        self.header = self.insert_string(self.header, index, 'Protein')
         index += 20
 
         self.header = self.insert_string(self.header, index, 'Price')
@@ -68,7 +68,7 @@ class DataObject:
         self.print_str = self.insert_string(self.print_str, index, str(self.fat))
         index += 10
 
-        self.print_str = self.insert_string(self.print_str, index, str(self.protien))
+        self.print_str = self.insert_string(self.print_str, index, str(self.protein))
         index += 20
 
         price_str = '{0:.2f}'.format(round(self.price, 2))

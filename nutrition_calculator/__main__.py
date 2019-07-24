@@ -55,8 +55,8 @@ def main():
 
     #print(os.getcwd())
     #print(Path.home())
-    module_path = os.path.dirname(__file__)
-    data_path = os.path.join(module_path,'data')
+    #module_path = os.path.dirname(__file__)
+    #data_path = os.path.join(module_path,'data')
 
     run = True
     recipes = []
@@ -101,13 +101,16 @@ def main():
             run = False
 
         if opt in ['--codes']:
-            nc.get_data_from_codes( os.path.join( data_path, 'index.csv') )
+            nc.get_data_from_codes( os.path.join( NutritionCalculator.module_data, 'index.csv') )
             nc.get_data_from_codes( os.path.join( NutritionCalculator.local_documents, 'index.csv') )
             run = False
 
     # Execute
     if run:
-        nc.execute()
+        if len(recipes) > 0:
+            nc.process_recipes(recipes)
+        else:
+            nc.execute()
 
 
 if __name__ == "__main__":
