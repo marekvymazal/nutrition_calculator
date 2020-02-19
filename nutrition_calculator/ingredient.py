@@ -1,4 +1,5 @@
 import os
+import json
 from fractions import Fraction
 
 from bs4 import BeautifulSoup
@@ -130,11 +131,11 @@ class Ingredient(DataObject):
 
         from .nutrition_calculator import NutritionCalculator as NC
 
-        file_name = self.name + '.csv'
+        file_name = self.name + '.json'
         data_file = None
 
         for dirpath, dirnames, filenames in os.walk(NC.local_data):
-            for _filename in [f for f in filenames if f.endswith('.csv')]:
+            for _filename in [f for f in filenames if f.endswith('.json')]:
                 if _filename == file_name:
                     data_file = os.path.join(dirpath, file_name)
 
@@ -146,90 +147,77 @@ class Ingredient(DataObject):
 
         unit_map = {}
 
-        # custom csv parser
-        data = open(data_file, encoding='utf-8', errors='replace', mode='r')
-
-        column_cnt = 0
+        # load json
+        f = open(data_file, encoding='utf-8', errors='replace', mode='r')
+        text = f.read()
+        data = json.loads(text)
+        f.close()
 
         # get units
-        for line in data:
-            items = line.split(',')
+        found = False
+        try:
+            # is 100g?
+            if 'inputFoods' in data:
+                for u in data['inputFoods']:
+                    if u['unit'] == 'GM': # gram weight
+                        if u['gramWeight'] == 100:
+                            #print("  using 100 g")
+                            pass
+                        else:
+                            #print("  gram weight is not 100g")
+                            pass
 
-            if items[0] == 'Nutrient' and items[1] == 'Unit':
-                column_cnt = len(items)-1
+                        found = True
 
-                if NC.debug:
-                    print('  columns=' + str(column_cnt))
+        except:
+            pass
 
-                for i in range(2, len(items)):
-                    s = items[i].replace('"','')
-                    if s in [None,'','Data points','Std. Error']:
-                        continue
+        if not found:
+            try:
+                if data["servingSizeUnit"] == "ml":
+                    #print("  using 100 ml?")
+                    found = True
+                elif data["servingSizeUnit"] == "g":
+                    #print("  using 100 g")
+                    found = True
 
-                    if NC.debug:
-                        print(s)
+            except KeyError:
+                pass
 
-                    if s == '1Value per 100 g':
-                        unit_map['100g'] = i
+        if not found:
+            print("  COULD NOT FIND UNIT IN " + self.name)
 
-                    elif s.startswith('1 cup'):
-                        unit_map['1 cup'] = i
-
-                    else:
-                        if '=' in s:
-                            unit = s.split('=')[0].strip().lower()
-                            if unit.startswith('1 '):
-                                unit = unit[2:].lower()
-                                unit_map[unit] = i
-                        #else:
-                        #    unit_map[s.lower()] = i
+        to_100g = 1
 
         if NC.debug:
             print("unit map")
             for key, value in unit_map.items():
                 print('  ' + key + '=' + str(value))
 
-        data.close()
 
         # get values
-        data = open(data_file, encoding='utf-8', errors='replace', mode='r')
-        for line in data:
-            if line[0] != '"':
-                continue
+        # store values of 1g
+        for nutrient in Ingredient.nutrient_list:
+            #if 'unit' in Ingredient.nutrient_list[nutrient]:
+            #    if unit != Ingredient.nutrient_list[nutrient]['unit']:
+            #        continue
+            if 'foodNutrients' in data:
+                for item in data['foodNutrients']:
+                    if nutrient == item['nutrient']['name']:
+                        #print("  " + item['nutrient']['name'])
 
-            nutrient = line.split('"')[1].strip()
+                        #print(Ingredient.nutrient_list[nutrient]['id'])
 
-            items = line.split('"')[2].strip().split(',')
+                        id = Ingredient.nutrient_list[nutrient]['id']
+                        #print("  " + id)
 
-            if len(items) != column_cnt:
-                continue
+                        val = item["amount"] * to_100g * 0.01 * self.grams
+                        #val = float(items[unit_map['100g']]) * 0.01 * self.grams
 
-            if NC.debug:
-                print("      " + nutrient)
-                #print(items)
+                        val = round(val, 2)
+                        #print('  ' + id + '=' + str(val) + "   (100g)=" + str(item["amount"]))
+                        setattr(self, id, val)
 
-                for key, value in unit_map.items():
-                    print("        " + key + '=' + str(items[value]))
-
-            unit = items[1]
-            #print(unit)
-
-            # store values of 1g
-            if nutrient in Ingredient.nutrient_list:
-                if 'unit' in Ingredient.nutrient_list[nutrient]:
-                    if unit != Ingredient.nutrient_list[nutrient]['unit']:
-                        continue
-
-                #print(Ingredient.nutrient_list[nutrient]['id'])
-                #"Energy",kcal
-                id = Ingredient.nutrient_list[nutrient]['id']
-                val = float(items[unit_map['100g']]) * 0.01 * self.grams
-
-                val = round(val, 2)
-                #print('  ' + id + '=' + str(val))
-                setattr(self, id, val)
-
-        data.close()
 
         # calculate missing data
         if self.calories == 0:

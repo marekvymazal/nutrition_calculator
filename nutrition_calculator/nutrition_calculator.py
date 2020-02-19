@@ -8,6 +8,8 @@ from .predictor import Predictor
 from .data_object import DataObject
 
 import pandas as pd
+import requests
+import json
 
 class NutritionCalculator:
 
@@ -17,6 +19,8 @@ class NutritionCalculator:
     local_data = None # where per item csv files are stored
     local_recipes = None # where recipe files are stored
     local_units = None # where unit file are stored
+
+    api_key = None
 
     debug = False
 
@@ -43,6 +47,7 @@ class NutritionCalculator:
             # TODO: try get filename from code
             pass
 
+        """
         url = "https://ndb.nal.usda.gov/ndb/foods/show/" + code + "?format=Full"
         #"https://ndb.nal.usda.gov/ndb/foods/show/08120?format=Full"
         #html = WebHTML.get_html( url )
@@ -62,6 +67,38 @@ class NutritionCalculator:
         else:
             html = WebHTML.get_html( dl, download=True, filename=filename+'.csv' )
         #print(html)
+        """
+
+        url = 'https://api.nal.usda.gov/fdc/v1/' + code
+        payload = {'api_key': NutritionCalculator.api_key}
+
+        # GET
+        #r = requests.get(url)
+
+        # GET with params in URL
+        r = requests.get(url, params=payload)
+
+        # POST with form-encoded data
+        #r = requests.post(url, data=payload)
+
+        # POST with JSON
+
+        #r = requests.post(url, data=json.dumps(payload))
+
+        # Response, status etc
+        print(r.text)
+        print(r.status_code)
+
+        if (filename == None):
+            return
+
+        if r.status_code == 200:
+            data = json.loads(r.text)
+            print(json.dumps(data, indent=4))
+            f = open(os.path.join(NutritionCalculator.local_data, filename + ".json"), 'w', encoding='utf-8')
+            #json.dump(r.text, f, ensure_ascii=False, indent=4)
+            json.dump(data, f, indent=4)
+            f.close()
 
 
     def get_data_from_codes( self, code_file ):
@@ -78,8 +115,10 @@ class NutritionCalculator:
 
         data = open(code_file, encoding='utf-8', mode='r')
         for line in data:
-            if line.startswith('NDB-code'):
+            if line.startswith('#'):
                 continue
+
+            print(line)
 
             items = line.split(',')
 
@@ -150,6 +189,30 @@ class NutritionCalculator:
             if not os.path.exists( folder ):
                 os.makedirs( folder )
                 print("Created directory :" + folder)
+
+        # create config file
+        config_path = os.path.join(NutritionCalculator.local_documents, "config.csv")
+        if not os.path.exists(config_path):
+            f = open(config_path, 'w+')
+            f.write("VAR, VALUE\n")
+            f.write("API_KEY, <YOUR KEY>")
+            f.close()
+
+            print("open " + config_path + " and enter API_KEY");
+            print("go to https://fdc.nal.usda.gov/api-key-signup.html to obtain key")
+
+            return False
+        else:
+            # load key
+            data = open(config_path, encoding='utf-8', mode='r')
+            for line in data:
+                if not line.startswith('API_KEY'):
+                    continue
+
+                items = line.split(',')
+                NutritionCalculator.api_key = items[1].strip()
+
+                print("Found API_KEY=" + NutritionCalculator.api_key)
 
         # TODO: copy defaults from data directory?
 

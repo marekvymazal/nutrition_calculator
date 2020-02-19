@@ -17,7 +17,8 @@ def main():
     help_str = """
     -h,--help               Show help
     --recipe recipe_file    Calculates nutrition for specified recipe
-    --code ndb_id           Gets nutrition data from usda database ndb code
+    --code ndb_id           Downloads nutrition data from usda database ndb code
+    --codes                 Downloads all nutrition data using food codes in data/index.csv and Documents/Nutrition/index.csv
     --debug                 Runs in debug mode (gives more output)
 
     Documents/Nutrition Calculator/

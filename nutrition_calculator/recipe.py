@@ -15,6 +15,7 @@ NOTES
 from bs4 import BeautifulSoup
 import html5lib
 import os
+import json
 
 from .data_object import DataObject
 from .ingredient import Ingredient
@@ -134,7 +135,7 @@ class Recipe(DataObject):
 
         data = open(code_file, encoding='utf-8', mode='r')
         for line in data:
-            if line.startswith('NDB-code'):
+            if line.startswith('#'):
                 continue
 
             items = line.split(',')

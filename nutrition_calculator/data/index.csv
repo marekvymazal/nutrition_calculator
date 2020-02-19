@@ -1,8 +1,18 @@
-NDB-code, file_name, alt names
-09050, blueberries, blueberry
-08120, oatmeal, rolled oats, oats
-45218035, maple_syrup
-45041356, vegan_sausage, sausage
-45346972, vegenaise, veganaise, mayo, mayonaise, vegan mayonaise, vegan mayo
-45083841, tofu
-45339502, tortillas
+# code (FDC-ID), file_name, alt names
+# fruits
+341647, blueberries, blueberry
+# vegetables
+342205, spinach
+# grains
+340734, oatmeal, rolled oats, oats
+# condiments
+672750, vegenaise, veganaise, mayo, mayonaise, vegan mayonaise, vegan mayo
+343954, maple_syrup
+# protiens
+388713, tofu
+376744, vegan_sausage, sausage
+# breads
+399846, tortillas
+# beverages
+498942, almond_milk, milk, nut milk
+719016, oat_milk

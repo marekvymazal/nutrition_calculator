@@ -1,20 +1,24 @@
 # Nutrition Calculator
 Copyright (c) 2019 Marek Vymazal
 
+### This program uses FoodData Central for its data
+U.S. Department of Agriculture, Agricultural Research Service.  
+FoodData Central, 2019. fdc.nal.usda.gov.
+
 ## Installation
 `pip install .`
 
-__for development__
+__for development__  
 `pip install -e .`
 
-__requirements__
+__requirements__  
 For downloading ingredient nutrition data files (.csv) you will need:
 * [Firefox](https://www.mozilla.org/en-US/firefox/new/)
 * [Firefox Gecko driver](https://github.com/mozilla/geckodriver/releases/)
 `TODO: download location / path to gecko`
 
 ## Instructions
-run `nutrition_calculator` in terminal to see help
+run `nutrition_calculator --help` in terminal to see help
 
 ### Download nutrition data for ingredients
 `nutrition_calculator --codes`
@@ -48,10 +52,10 @@ __Example recipe file: oatmeal.txt__
 ## Units files
 Unit files hold special conversion information for the calculator.
 
-`price=1.50/100`
+`price=1.50/100`  
 The above line tells the calculator that the item costs $1.50 per 100g
 
-`default=42`
+`default=42`  
 The above line tells the calculator that the default unit is 42 grams
 When no unit is detected it will refer to the default value.
 This is useful for measures like 3 bananas or 1 tortilla, since there is no standard measure like 1 cup or 1 tsp it uses the ingredients default value for calculation. So in the above example 1 tortilla will mean 42g worth of tortilla nutrition.
