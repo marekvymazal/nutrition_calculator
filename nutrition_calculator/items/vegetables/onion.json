@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.29,
+        "grams":325
+    },
+    "units":{
+        "default":325
+    },
+    "names":[
+        "onion"
+    ],
+    "code":"376744"
+}

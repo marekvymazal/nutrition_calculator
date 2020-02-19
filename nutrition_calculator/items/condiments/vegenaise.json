@@ -1,0 +1,18 @@
+{
+    "cost":{
+        "price":4.98,
+        "grams":448
+    },
+    "units":{
+        "tbsp":14
+    },
+    "names":[
+        "vegenaise",
+        "veganaise",
+        "mayo",
+        "mayonaise",
+        "vegan mayonaise",
+        "vegan mayo"
+    ],
+    "code":"672750"
+}

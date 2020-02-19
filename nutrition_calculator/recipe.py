@@ -29,7 +29,8 @@ class Recipe(DataObject):
         'clove',
         'bulb',
         'can',
-        'container']
+        'container',
+        'block']
 
     def __init__(self, recipe_file ):
 
@@ -83,7 +84,10 @@ class Recipe(DataObject):
                 name = '_'.join(words).lower()
                 potential_names.append(name)
 
-            name = self.find_ingredient( potential_names )
+            #print(potential_names)
+
+            name, relpath = NC.find_item( potential_names )
+
             if name == None:
                 raise ValueError('could not find ingredient data for: ' + line)
 
@@ -105,7 +109,7 @@ class Recipe(DataObject):
                 print (info_str)
 
             # process ingredient
-            ing = Ingredient(amount, unit, name)
+            ing = Ingredient(amount, unit, name, relpath=relpath)
             ing.print()
 
             self.calories += ing.calories
@@ -121,32 +125,3 @@ class Recipe(DataObject):
 
         self.print()
         print('')
-
-
-    def find_ingredient( self, potential_names ):
-        # cross reference data files for potential names using filename and alt names
-
-        from .nutrition_calculator import NutritionCalculator as NC
-
-        code_file = os.path.join( NC.module_data, 'index.csv')
-        #nc.get_data_from_codes( os.path.join( NutritionCalculator.local_documents, 'index.csv') )
-
-        data = open(code_file, encoding='utf-8', mode='r')
-        for line in data:
-            if line.startswith('#'):
-                continue
-
-            items = line.split(',')
-
-            code = items[0].strip()
-            filename = items[1].strip()
-
-            if filename in potential_names:
-                return filename
-
-            for item in items[2:]:
-                item = item.strip().replace(' ','_')
-                if item in potential_names:
-                    return filename
-
-        data.close()

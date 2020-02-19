@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":100
+    },
+    "units":{
+        "tsp":6
+    },
+    "names":[
+        "salt"
+    ],
+    "code":"376744"
+}

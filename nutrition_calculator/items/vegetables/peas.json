@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":100
+    },
+    "units":{
+        "cup":134
+    },
+    "names":[
+        "peas"
+    ],
+    "code":"170419"
+}

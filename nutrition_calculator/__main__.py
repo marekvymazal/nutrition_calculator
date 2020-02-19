@@ -62,8 +62,10 @@ def main():
     nc = NutritionCalculator()
     nc.setup()
 
+    print(argv)
+
     try:
-        opts, args = getopt.getopt(argv,"hirf:",["help","recipe=","code=","filename=","codes","debug"])
+        opts, args = getopt.getopt(argv,"hirf:d",["help","recipe=","code=","filename=","codes","debug","download"])
 
     except getopt.GetoptError:
         print(help_str)
@@ -79,6 +81,16 @@ def main():
         if opt in ['-f', '--filename']:
             filename = arg
 
+    # download
+    if 'download' in argv:
+        index = argv.index('download')
+        items = argv[index+1:]
+        for item in items:
+            print("trying to download: " + item)
+            nc.download_item(item)
+
+        return
+
     for opt, arg in opts:
 
         print(opt, arg)
@@ -92,6 +104,10 @@ def main():
             print('Recipe ' + arg)
             recipes.append(arg)
             run = True
+
+        if opt in ['-d','--download']:
+            f = arg
+            print(arg)
 
         if opt in ['--code']:
             code = arg

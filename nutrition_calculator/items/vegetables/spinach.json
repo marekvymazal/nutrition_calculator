@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":1.98,
+        "grams":283
+    },
+    "units":{
+        "cup":42,
+        "container":283
+    },
+    "names":[
+        "spinach"
+    ],
+    "code":"376744"
+}

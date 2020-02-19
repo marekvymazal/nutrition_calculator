@@ -14,13 +14,13 @@ class Ingredient(DataObject):
 
     # this list matches items in the data csv files and then uses the id as the attribute to set
     nutrient_list = {
-        "Energy":{'id':'calories','unit':'kcal'},
+        "Energy":{'id':'calories','unitName':'kcal'},
         "Total lipid (fat)":{'id':'fat'},
         "Protein":{'id':'protein'},
         "Carbohydrate, by difference":{'id':'carbs'}
     }
 
-    def __init__(self, amount, unit, name):
+    def __init__(self, amount, unit, name, relpath=""):
 
         DataObject.__init__(self, name)
 
@@ -51,7 +51,7 @@ class Ingredient(DataObject):
         if NC.debug:
             print('['+ str(self.amount) + '][' + self.unit + '][' + self.name + ']')
 
-        unit_path = os.path.join(NC.local_units, name + '.txt')
+        unit_path = os.path.join(NC.local_items, relpath, name + '.json')
 
         if not os.path.isfile(unit_path):
             raise ValueError('no unit found for ' + name + '\n  ' + unit_path)
@@ -61,26 +61,25 @@ class Ingredient(DataObject):
             print("  " + unit_path)
 
         ing_unit_file = open(unit_path, 'r')
-        for line in ing_unit_file:
-            if 'price' in line:
-                price, grams = line.strip().split('=')[1].split('/')
-                self.price_per_gram = float(price) / float(grams)
-                #print (price + " / " + gramses + " = " + str(self.price_per_gram) )
+        data = json.loads(ing_unit_file.read())
+        ing_unit_file.close()
 
-            if not found_unit:
-                if 'default' in line:
-                    val = line.strip().split('=')[1]
-                    self.gpu = round(float(val),2)
-                    fount_unit = True
-                for x in range(len(self.unit_names)):
-                    if self.unit_names[x] in line:
-                        self.unit_values[x] = round(float(line.strip().split('=')[1]),2)
-                        if self.unit in self.unit_names[x]:
-                            fount_unit = True
-                if self.unit in line:
-                    val = line.strip().split('=')[1]
-                    self.gpu = round(float(val),2)
-                    found_unit = True
+        self.price_per_gram = float(data['cost']['price']) / float(data['cost']['grams'])
+
+        if not found_unit:
+            if 'default' in data['units']:
+                self.gpu = round(float(data['units']['default']), 2)
+                found_unit = True
+
+            for x in range(len(self.unit_names)):
+                if self.unit_names[x] in data['units']:
+                    self.unit_values[x] = round(float(data['units'][self.unit_names[x]]), 2)
+                    if self.unit in self.unit_names[x]:
+                        found_unit = True
+
+            if self.unit in data['units']:
+                self.gpu = round(float(data['units'][self.unit]), 2)
+                found_unit = True
 
         # set unit values if possible
         process_units = None
@@ -133,6 +132,7 @@ class Ingredient(DataObject):
 
         for dirpath, dirnames, filenames in os.walk(NC.local_data):
             for _filename in [f for f in filenames if f.endswith('.json')]:
+                #print(_filename)
                 if _filename == file_name:
                     data_file = os.path.join(dirpath, file_name)
 
@@ -181,7 +181,7 @@ class Ingredient(DataObject):
             except KeyError:
                 pass
 
-        if not found:
+        if not found and NC.debug:
             print("  COULD NOT FIND UNIT IN " + self.name)
 
         to_100g = 1
@@ -206,8 +206,14 @@ class Ingredient(DataObject):
                         #print(Ingredient.nutrient_list[nutrient]['id'])
 
                         id = Ingredient.nutrient_list[nutrient]['id']
-                        #print("  " + id)
 
+                        if 'unitName' in Ingredient.nutrient_list[nutrient]:
+                            if Ingredient.nutrient_list[nutrient]['unitName'] != item['nutrient']['unitName']:
+                                # checks to see if correct unit, ex kcal for calories
+                                continue
+
+                        #print("  " + id)
+                        #print("amount: " + str(item["amount"]))
                         val = item["amount"] * to_100g * 0.01 * self.grams
                         #val = float(items[unit_map['100g']]) * 0.01 * self.grams
 

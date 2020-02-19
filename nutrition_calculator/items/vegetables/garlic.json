@@ -1,0 +1,15 @@
+{
+    "cost":{
+        "price":0.48,
+        "grams":30
+    },
+    "units":{
+        "default":3,
+        "clove":3,
+        "bulb":30
+    },
+    "names":[
+        "garlic"
+    ],
+    "code":"376744"
+}

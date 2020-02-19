@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":0.53,
+        "grams":438
+    },
+    "units":{
+        "can":438
+    },
+    "names":[
+        "chickpeas",
+        "garbanzo beans"
+    ],
+    "code":"672750"
+}

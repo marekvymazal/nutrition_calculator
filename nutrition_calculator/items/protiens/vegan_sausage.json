@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":4.99,
+        "grams":264
+    },
+    "units":{
+        "default":22
+    },
+    "names":[
+        "vegan sausage",
+        "sausage"
+    ],
+    "code":"376744"
+}

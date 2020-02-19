@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":100
+    },
+    "units":{
+        "tsp":3
+    },
+    "names":[
+        "flaxseeds",
+        "flaxseed"
+    ],
+    "code":"672750"
+}

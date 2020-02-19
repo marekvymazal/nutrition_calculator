@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":2.54,
+        "grams":400
+    },
+    "units":{
+        "default":50
+    },
+    "names":[
+        "tortilla"
+    ],
+    "code":"376744"
+}

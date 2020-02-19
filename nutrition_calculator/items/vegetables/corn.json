@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":164
+    },
+    "units":{
+        "can":164,
+        "cup":166
+    },
+    "names":[
+        "corn"
+    ],
+    "code":"168398"
+}

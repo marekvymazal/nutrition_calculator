@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.98,
+        "grams":78
+    },
+    "units":{
+        "default":78
+    },
+    "names":[
+        "carrot"
+    ],
+    "code":"376744"
+}

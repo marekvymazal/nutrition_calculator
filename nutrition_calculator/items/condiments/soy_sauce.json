@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":100
+    },
+    "units":{
+        "tbsp":16
+    },
+    "names":[
+        "soy sauce"
+    ],
+    "code":"498942"
+}

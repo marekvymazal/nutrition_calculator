@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":0.27,
+        "grams":320
+    },
+    "units":{
+        "default":320
+    },
+    "names":[
+        "potato",
+        "russet potato"
+    ],
+    "code":"376744"
+}

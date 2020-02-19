@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.98,
+        "grams":136
+    },
+    "units":{
+        "default":136
+    },
+    "names":[
+        "avocado"
+    ],
+    "code":"672750"
+}

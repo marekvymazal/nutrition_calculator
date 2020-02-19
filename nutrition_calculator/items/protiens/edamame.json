@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":1.69,
+        "grams":100
+    },
+    "units":{
+        "default":100
+    },
+    "names":[
+        "edamame"
+    ],
+    "code":"672750"
+}

@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":100
+    },
+    "units":{
+        "cup":240
+    },
+    "names":[
+        "soy milk"
+    ],
+    "code":"498942"
+}

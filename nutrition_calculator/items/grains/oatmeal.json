@@ -1,0 +1,15 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":100
+    },
+    "units":{
+        "cup":81
+    },
+    "names":[
+        "oatmeal",
+        "oats",
+        "rolled oats"
+    ],
+    "code":"672750"
+}

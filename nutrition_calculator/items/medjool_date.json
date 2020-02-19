@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.30,
+        "grams":24
+    },
+    "units":{
+        "default":24
+    },
+    "names":[
+        "medjool date"
+    ],
+    "code":"376744"
+}

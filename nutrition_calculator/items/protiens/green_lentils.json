@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":100
+    },
+    "units":{
+        "cup":192
+    },
+    "names":[
+        "green lentils",
+        "lentils"
+    ],
+    "code":"672750"
+}

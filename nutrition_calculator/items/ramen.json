@@ -1,0 +1,16 @@
+{
+    "cost":{
+        "price":0.30,
+        "grams":84
+    },
+    "units":{
+        "default":84,
+        "block":84
+    },
+    "names":[
+        "ramen",
+        "top ramen",
+        "ramen noodles"
+    ],
+    "code":"171177"
+}

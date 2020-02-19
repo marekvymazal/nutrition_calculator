@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":0.59,
+        "grams":100
+    },
+    "units":{
+        "can":240
+    },
+    "names":[
+        "black beans",
+        "beans"
+    ],
+    "code":"672750"
+}

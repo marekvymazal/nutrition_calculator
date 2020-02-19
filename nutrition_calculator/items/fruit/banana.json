@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":0.30,
+        "grams":118
+    },
+    "units":{
+        "default":118
+    },
+    "names":[
+        "banana"
+    ],
+    "code":"672750"
+}

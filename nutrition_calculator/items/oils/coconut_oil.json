@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":0.98,
+        "grams":14
+    },
+    "units":{
+        "tbsp":14
+    },
+    "names":[
+        "coconut oil",
+        "oil"
+    ],
+    "code":"672750"
+}

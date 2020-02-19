@@ -1,0 +1,15 @@
+{
+    "cost":{
+        "price":1.48,
+        "grams":170
+    },
+    "units":{
+        "default":425,
+        "container":425
+    },
+    "names":[
+        "tofu",
+        "firm tofu"
+    ],
+    "code":"672750"
+}

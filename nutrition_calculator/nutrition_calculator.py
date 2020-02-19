@@ -17,7 +17,7 @@ class NutritionCalculator:
     local_documents = None
     local_data = None # where per item csv files are stored
     local_recipes = None # where recipe files are stored
-    local_units = None # where unit file are stored
+    local_items = None # where item files are stored
 
     api_key = None
 
@@ -64,14 +64,12 @@ class NutritionCalculator:
         if not os.path.exists( code_file ):
             return
 
-        #df = pd.read_csv(code_file, index_col=False, dtype={'NDB-code': str} )
-        #for row in df.itertuples():
-        #    print(row[1].strip(), row[2].strip() )
-        #    self.get_data_from_code(row[1].strip(), filename=row[2].strip())
-
         data = open(code_file, encoding='utf-8', mode='r')
         for line in data:
             if line.startswith('#'):
+                continue
+
+            if line.strip() == '':
                 continue
 
             print(line)
@@ -84,6 +82,97 @@ class NutritionCalculator:
             # TODO: get alt names and use them
 
             self.get_data_from_code(code, filename=filename)
+
+        return
+
+
+    def find_item( potential_names ):
+        # cross reference data files for potential names using filename and alt names
+        if potential_names == None:
+            return None, None
+
+        if len(potential_names) == 0:
+            return None, None
+
+        for root, subdirs, files in os.walk(NutritionCalculator.local_items):
+            for f in files:
+                if os.path.splitext(f)[1] != '.json':
+                    continue
+
+                n = os.path.splitext(f)[0]
+                if n == potential_names[0]:
+                    relpath = root[len(NutritionCalculator.local_items)+1:]
+                    return n, relpath
+
+        #print("Check alts")
+
+        # if not found check alt names
+        for root, subdirs, files in os.walk(NutritionCalculator.local_items):
+            for f in files:
+                if os.path.splitext(f)[1] != '.json':
+                    continue
+
+                #print(os.path.join(root, f))
+
+                input_file = open(os.path.join(root, f), 'r')
+                data = json.loads(input_file.read())
+                input_file.close()
+
+                n = os.path.splitext(f)[0]
+
+                for alt in data['names']:
+                    alt = alt.strip().lower().replace(' ', '_')
+                    for potential_name in potential_names:
+                        if potential_name == alt:
+                            relpath = root[len(NutritionCalculator.local_items)+1:]
+                            return n, relpath
+
+        return None, None
+
+
+    def get_code(self, item_file):
+        if NutritionCalculator.debug:
+            print(NutritionCalculator.local_items + item_file + '.json')
+
+        input_file = open(os.path.join(NutritionCalculator.local_items, item_file + '.json'), 'r')
+        data = json.loads(input_file.read())
+        input_file.close()
+
+        return data['code']
+
+
+    def download_item( self, item_name ):
+        file_name = item_name.lower().replace(' ', '_')
+
+        # find unit file
+        file_name, relpath = NutritionCalculator.find_item( [file_name] )
+        print("  " + os.path.join(relpath, file_name))
+
+        # get code
+        code = self.get_code(os.path.join(relpath, file_name))
+        print("  " + code)
+
+        # download data from code
+        url = 'https://api.nal.usda.gov/fdc/v1/' + code
+        params = {'api_key': NutritionCalculator.api_key}
+
+        r = requests.get(url, params=params)
+
+        if r.status_code == 200:
+            print("  received data")
+            data = json.loads(r.text)
+            #print(json.dumps(data, indent=4))
+
+            if not os.path.exists(os.path.join(NutritionCalculator.local_data, relpath)):
+                os.makedirs(os.path.join(NutritionCalculator.local_data, relpath))
+
+            data_file = os.path.join(NutritionCalculator.local_data, relpath, file_name) + ".json"
+
+            f = open(data_file, 'w', encoding='utf-8')
+            json.dump(data, f, indent=4)
+            f.close()
+
+            print("  Saved data as: " + data_file)
 
         return
 
@@ -132,13 +221,13 @@ class NutritionCalculator:
         NutritionCalculator.local_documents = os.path.join(documents_path, "Nutrition")
         NutritionCalculator.local_data = os.path.join(NutritionCalculator.local_documents, "Data")
         NutritionCalculator.local_recipes = os.path.join(NutritionCalculator.local_documents, "Recipes")
-        NutritionCalculator.local_units = os.path.join(NutritionCalculator.local_documents, "Units")
+        NutritionCalculator.local_items = os.path.join(NutritionCalculator.local_documents, "Items")
 
         folders = [
             NutritionCalculator.local_documents,
             NutritionCalculator.local_data,
             NutritionCalculator.local_recipes,
-            NutritionCalculator.local_units
+            NutritionCalculator.local_items
         ]
 
         for folder in folders:

@@ -1,0 +1,15 @@
+{
+    "cost":{
+        "price":1.75,
+        "grams":214
+    },
+    "units":{
+        "default":214,
+        "can":214,
+        "cup":245
+    },
+    "names":[
+        "tomato sauce"
+    ],
+    "code":"376744"
+}
