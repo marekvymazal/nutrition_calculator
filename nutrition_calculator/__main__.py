@@ -5,9 +5,6 @@ import shutil, errno
 
 from pathlib import Path
 
-from bs4 import BeautifulSoup
-import html5lib
-
 from .nutrition_calculator import NutritionCalculator
 
 def main():

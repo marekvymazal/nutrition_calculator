@@ -11,11 +11,10 @@ FoodData Central, 2019. fdc.nal.usda.gov.
 __for development__  
 `pip install -e .`
 
-__requirements__  
-For downloading ingredient nutrition data files (.csv) you will need:
-* [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-* [Firefox Gecko driver](https://github.com/mozilla/geckodriver/releases/)
-`TODO: download location / path to gecko`
+__downloading nutrition data (optional)__  
+For downloading ingredient nutrition data files (.json) you will need an API Key for FoodData Central obtained here:
+* [FoodData Central API KEY](https://fdc.nal.usda.gov/api-key-signup.html)
+Then you will need to paste the key into the config.csv file in the Documents/Nutrition folder that is generated when the program is run.
 
 ## Instructions
 run `nutrition_calculator --help` in terminal to see help

@@ -10,7 +10,7 @@ setup(
    long_description=long_description,
    author='Marek Vymazal',
    packages=['nutrition_calculator'],  #same as name
-   install_requires=['selenium', 'beautifulsoup4', 'pandas'], #external packages as dependencies
+   install_requires=['pandas'], #external packages as dependencies
    entry_points={
           'console_scripts': [
               'nutrition_calculator = nutrition_calculator.__main__:main'

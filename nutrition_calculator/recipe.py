@@ -12,8 +12,6 @@ NOTES
     Unit folder containers details of what unit translates to grams
     Recipes folder contains all recipes
 '''
-from bs4 import BeautifulSoup
-import html5lib
 import os
 import json
 

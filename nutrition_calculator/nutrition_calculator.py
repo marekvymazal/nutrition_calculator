@@ -2,7 +2,6 @@
 import os
 from pathlib import Path
 
-from .web_html import WebHTML
 from .recipe import Recipe
 from .predictor import Predictor
 from .data_object import DataObject
@@ -30,12 +29,6 @@ class NutritionCalculator:
         return
 
 
-    def get_data_from_url( self, url ):
-        print( url )
-        html = WebHTML.get_url( url )
-        print(html)
-
-
     def get_data_from_code( self, code, filename=None ):
         """
         Downloads csv data from NDB code
@@ -47,56 +40,19 @@ class NutritionCalculator:
             # TODO: try get filename from code
             pass
 
-        """
-        url = "https://ndb.nal.usda.gov/ndb/foods/show/" + code + "?format=Full"
-        #"https://ndb.nal.usda.gov/ndb/foods/show/08120?format=Full"
-        #html = WebHTML.get_html( url )
-        print(url)
-
-        # get download link
-        dl = "https://ndb.nal.usda.gov/ndb/foods/show/" + code + "?format=Full&reportfmt=csv&Qv=1"
-        #/ndb/foods/show/45041356?format=Full&reportfmt=csv&Qv=1
-        #"https://ndb.nal.usda.gov/ndb/foods/show/45041356?format=Full&reportfmt=csv&Qv=1"
-
-        # download csv
-        if NutritionCalculator.local_data != None:
-            WebHTML.download_folder = NutritionCalculator.local_data
-
-        if filename == None:
-            html = WebHTML.get_html( dl, download=True, filename=code+'.csv' )
-        else:
-            html = WebHTML.get_html( dl, download=True, filename=filename+'.csv' )
-        #print(html)
-        """
-
         url = 'https://api.nal.usda.gov/fdc/v1/' + code
-        payload = {'api_key': NutritionCalculator.api_key}
+        params = {'api_key': NutritionCalculator.api_key}
 
-        # GET
-        #r = requests.get(url)
-
-        # GET with params in URL
-        r = requests.get(url, params=payload)
-
-        # POST with form-encoded data
-        #r = requests.post(url, data=payload)
-
-        # POST with JSON
-
-        #r = requests.post(url, data=json.dumps(payload))
-
-        # Response, status etc
-        print(r.text)
-        print(r.status_code)
-
-        if (filename == None):
-            return
+        r = requests.get(url, params=params)
 
         if r.status_code == 200:
             data = json.loads(r.text)
             print(json.dumps(data, indent=4))
+
+            if (filename == None):
+                return
+
             f = open(os.path.join(NutritionCalculator.local_data, filename + ".json"), 'w', encoding='utf-8')
-            #json.dump(r.text, f, ensure_ascii=False, indent=4)
             json.dump(data, f, indent=4)
             f.close()
 

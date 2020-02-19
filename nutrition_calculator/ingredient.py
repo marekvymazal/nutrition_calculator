@@ -2,9 +2,6 @@ import os
 import json
 from fractions import Fraction
 
-from bs4 import BeautifulSoup
-import html5lib
-
 from .data_object import DataObject
 
 import pandas as pd
