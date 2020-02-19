@@ -62,10 +62,8 @@ def main():
     nc = NutritionCalculator()
     nc.setup()
 
-    print(argv)
-
     try:
-        opts, args = getopt.getopt(argv,"hirf:d",["help","recipe=","code=","filename=","codes","debug","download"])
+        opts, args = getopt.getopt(argv,"hirf:d",["help","recipe=","code=","filename=","codes","debug","download","sync"])
 
     except getopt.GetoptError:
         print(help_str)
@@ -89,6 +87,11 @@ def main():
             print("trying to download: " + item)
             nc.download_item(item)
 
+        return
+
+    # sync
+    if 'sync' in argv:
+        nc.sync()
         return
 
     for opt, arg in opts:

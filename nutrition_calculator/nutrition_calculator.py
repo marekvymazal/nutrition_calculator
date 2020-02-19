@@ -10,6 +10,8 @@ import pandas as pd
 import requests
 import json
 
+from shutil import copyfile
+
 class NutritionCalculator:
 
     module_data = None # path to modules data folder
@@ -260,6 +262,36 @@ class NutritionCalculator:
                 print("Found API_KEY=" + NutritionCalculator.api_key)
 
         # TODO: copy defaults from data directory?
+
+    def sync( self ):
+
+        # iterate through module files and transfer them to local directories
+        files = []
+
+        targets = [
+            [os.path.join(NutritionCalculator.module_data, "items"), NutritionCalculator.local_items],
+            [os.path.join(NutritionCalculator.module_data, "recipes"), NutritionCalculator.local_recipes],
+            [os.path.join(NutritionCalculator.module_data, "data"), NutritionCalculator.local_data]
+        ]
+
+        for target in targets:
+            for (dirpath, dirnames, filenames) in os.walk(target[0]):
+                for filename in filenames:
+
+                    src = os.path.join( dirpath, filename)
+
+                    relpath = dirpath[len(target[0])+1:]
+                    relpath = relpath.replace('_',' ').title()
+
+                    target_folder = os.path.join( target[1], relpath)
+                    if not os.path.exists( target_folder ):
+                        os.makedirs( target_folder )
+
+                    dst = os.path.join( target_folder, filename)
+
+                    print( "  " + dst )
+
+                    copyfile(src, dst)
 
 
     def execute( self ):
