@@ -30,7 +30,8 @@ class Recipe(DataObject):
         'bulb',
         'can',
         'container',
-        'block']
+        'block',
+        'package']
 
     def __init__(self, recipe_file ):
 

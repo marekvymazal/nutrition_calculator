@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":4.49,
+        "grams":440
+    },
+    "units":{
+        "default":110
+    },
+    "names":[
+        "ice cream sandwich",
+        "ice cream sandwiches"
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":2.49,
+        "grams":477
+    },
+    "units":{
+        "container":477,
+        "package":477
+    },
+    "names":[
+        "fried rice"
+    ]
+}

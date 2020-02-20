@@ -1,0 +1,43 @@
+{
+    "userGenerated": "True",
+    "servingSize": 159.0,
+    "servingSizeUnit": "g",
+    "labelNutrients": {
+        "fat": {
+            "value": 1.5
+        },
+        "saturatedFat": {
+            "value": 0.0
+        },
+        "transFat": {
+            "value": 0.0
+        },
+        "cholesterol": {
+            "value": 0.0
+        },
+        "sodium": {
+            "value": 570.0
+        },
+        "carbohydrates": {
+            "value": 42.0
+        },
+        "fiber": {
+            "value": 3.0
+        },
+        "sugars": {
+            "value": 4.0
+        },
+        "protein": {
+            "value": 5.0
+        },
+        "calcium": {
+            "percent":"0"
+        },
+        "iron": {
+            "percent": "4"
+        },
+        "calories": {
+            "value": 210
+        }
+    }
+}

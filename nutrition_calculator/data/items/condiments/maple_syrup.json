@@ -1,13 +1,12 @@
 {
     "cost":{
-        "price":0.59,
-        "grams":100
+        "price":4.99,
+        "grams":236
     },
     "units":{
-        "tbsp":20
+        "tbsp":30
     },
     "names":[
         "maple syrup"
-    ],
-    "code":"498942"
+    ]
 }

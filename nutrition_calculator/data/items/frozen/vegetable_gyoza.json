@@ -1,15 +1,15 @@
 {
     "cost":{
-        "price":0.98,
-        "grams":136
+        "price":3.99,
+        "grams":420
     },
     "units":{
-        "default":136
+        "default":28,
+        "package":420
     },
     "names":[
         "thai vegetable gyoza",
         "gyoza",
         "vegetable gyoza"
-    ],
-    "code":"507717"
+    ]
 }
