@@ -40,7 +40,7 @@ class DataObject:
         index += 10
 
         self.header = self.insert_string(self.header, index, 'Protein')
-        index += 20
+        index += 10
 
         self.header = self.insert_string(self.header, index, 'Price')
         index += 10
@@ -51,29 +51,48 @@ class DataObject:
     def print_break(self):
         print ('-' * 60)
 
+    def pretty_number(self, num, d ):
+        if d == 0:
+            return (str(int(num)))
+        else:
+            return "{:.{}f}".format(round(num, d), d)
 
     def print(self):
         index = 0
-        self.print_str = ' ' * 60
+        self.print_str = ' ' * 70
 
-        self.print_str = self.insert_string(self.print_str, index, str(self.name))
-        index += 20
+        values = [
+            [self.name, None, '', '', False, 20],
+            [self.calories, 0, '', '', True, 10],
+            [self.carbs, 1, '', 'g', True, 10],
+            [self.fat, 1, '', 'g', True, 10],
+            [self.protein, 1, '', 'g', True, 10],
+            [self.price, 2, '$', '', True, 10]
+        ]
 
-        self.print_str = self.insert_string(self.print_str, index, str(round(self.calories,2)))
-        index += 10
+        for val in values:
+            index += val[5]
 
-        self.print_str = self.insert_string(self.print_str, index, str(round(self.carbs,2)))
-        index += 10
+            vs = str(val[0])
+            if val[1] != None:
+                vs = self.pretty_number( val[0], val[1] )
 
-        self.print_str = self.insert_string(self.print_str, index, str(round(self.fat, 2)))
-        index += 10
+            vs = val[2] + vs + val[3]
 
-        self.print_str = self.insert_string(self.print_str, index, str(round(self.protein,2)))
-        index += 20
+            padding = 0
+            if val[4]:
+                padding = -(len(vs)+2)
+            else:
+                padding = val[5] * -1
 
-        price_str = '{0:.2f}'.format(round(self.price, 2))
-        self.print_str = self.insert_string(self.print_str, index, price_str)
-        index += 10
+            self.print_str = self.insert_string(self.print_str, index+padding, vs)
+
+
+        #index += 10
+
+        #price_str = '{0:.2f}'.format(round(self.price, 2))
+        #self.print_str = self.insert_string(self.print_str, index, price_str)
+        #index += 10
 
         print (self.print_str)
 
