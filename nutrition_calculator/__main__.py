@@ -26,6 +26,10 @@ def main():
 
     validate                Scans all files and reports any errors
 
+    new recipe "Recipe name"     Creates a new recipe file from template
+    new item "Item Name"         Creates a new item file from template
+    new data "Item Name"         Creates a new data file from template
+
 
     HOW TO USE
 
@@ -81,7 +85,7 @@ def main():
     nc.setup()
 
     try:
-        opts, args = getopt.getopt(argv,"hirf:",["help","recipe=","code=","filename=","codes","debug","download","sync","validate"])
+        opts, args = getopt.getopt(argv,"hirf:",["help","recipe=","code=","filename=","codes","debug","download","sync","validate", 'new'])
 
     except getopt.GetoptError:
         print(help_str)
@@ -115,6 +119,16 @@ def main():
     # validate
     if 'validate' in argv:
         nc.validate()
+        return
+
+    # new
+    if 'new' in argv:
+        index = argv.index('new')
+        _type = argv[index+1]
+        _name = argv[index+2]
+
+        nc.add_new(_type, _name)
+
         return
 
 

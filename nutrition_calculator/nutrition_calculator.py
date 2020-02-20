@@ -15,6 +15,7 @@ from shutil import copyfile
 class NutritionCalculator:
 
     module_data = None # path to modules data folder
+    module_templates = None #path to modules template folder
 
     local_documents = None
     local_data = None # where per item csv files are stored
@@ -28,6 +29,7 @@ class NutritionCalculator:
     def __init__(self ):
         module_path = os.path.dirname(__file__)
         NutritionCalculator.module_data = os.path.join(module_path,'data')
+        NutritionCalculator.module_templates = os.path.join(module_path, 'templates')
         return
 
 
@@ -337,6 +339,44 @@ class NutritionCalculator:
             print("Found " + str(issue_cnt) + " issues")
         else:
             print("  found no issues")
+
+
+    def add_new( self, _type, _name):
+        if not _type in ['recipe', 'data', 'item']:
+            print("invalid type, use 'recipe','data', or 'item'")
+            return
+
+        filename = _name.lower().replace(" ","_")
+
+        template_file = None
+        destination_file = None
+
+        if _type == 'recipe':
+            template_file = os.path.join(NutritionCalculator.module_templates, 'recipe.txt')
+            destination_file = os.path.join(NutritionCalculator.local_recipes, filename + '.txt')
+            copyfile(template_file, destination_file)
+        elif _type == 'item':
+            template_file = os.path.join(NutritionCalculator.module_templates, 'item.json')
+            destination_file = os.path.join(NutritionCalculator.local_items, filename + '.json')
+
+            input_file = open(template_file, 'r')
+            data = json.loads(input_file.read())
+            input_file.close()
+
+            # update data
+            data['names'] = [_name.lower()]
+
+            f = open(destination_file, 'w', encoding='utf-8')
+            json.dump(data, f, indent=4)
+            f.close()
+
+        elif _type == 'data':
+            template_file = os.path.join(NutritionCalculator.module_templates, 'data.json')
+            destination_file = os.path.join(NutritionCalculator.local_data, filename + '.json')
+            copyfile(template_file, destination_file)
+
+        if destination_file != None:
+            print("Created: " + destination_file)
 
 
     def execute( self ):

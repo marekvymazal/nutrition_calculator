@@ -1,0 +1,15 @@
+{
+    "cost":{
+        "price":1.00,
+        "grams":100
+    },
+    "units":{
+        "default":50,
+        "package":200
+    },
+    "names":[
+        "main name",
+        "alt name"
+    ],
+    "code":"376744"
+}
