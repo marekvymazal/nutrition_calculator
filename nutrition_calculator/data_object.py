@@ -23,39 +23,39 @@ class DataObject:
 
         self.price = 0
 
-    def print_header(self):
-        index = 0
-        self.header = ' ' * 60
-
-        self.header = self.insert_string(self.header, index, 'Name')
-        index += 20
-
-        self.header = self.insert_string(self.header, index, 'Calories')
-        index += 10
-
-        self.header = self.insert_string(self.header, index, 'Carbs')
-        index += 10
-
-        self.header = self.insert_string(self.header, index, 'Fat')
-        index += 10
-
-        self.header = self.insert_string(self.header, index, 'Protein')
-        index += 10
-
-        self.header = self.insert_string(self.header, index, 'Price')
-        index += 10
-
-        print(self.header)
+        self.widths = [20, 10, 10, 10, 10, 10]
 
 
     def print_break(self):
-        print ('-' * 60)
+        print ('-' * 70)
+
 
     def pretty_number(self, num, d ):
         if d == 0:
             return (str(int(num)))
         else:
             return "{:.{}f}".format(round(num, d), d)
+
+
+    def print_header(self):
+        index = 0
+        self.header = ' ' * 70
+
+        labels = [
+            'Name',
+            'Calories',
+            'Carbs',
+            'Fat',
+            'Protien',
+            'Price'
+        ]
+
+        for x in range(len(labels)):
+            self.header = self.insert_string(self.header, index, labels[x])
+            index += self.widths[x]
+
+        print(self.header)
+
 
     def print(self):
         index = 0
@@ -87,14 +87,8 @@ class DataObject:
 
             self.print_str = self.insert_string(self.print_str, index+padding, vs)
 
-
-        #index += 10
-
-        #price_str = '{0:.2f}'.format(round(self.price, 2))
-        #self.print_str = self.insert_string(self.print_str, index, price_str)
-        #index += 10
-
         print (self.print_str)
+
 
     def insert_string( self, _str, _index, _value ):
         end = _index + len(_value)

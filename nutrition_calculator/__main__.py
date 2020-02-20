@@ -12,40 +12,52 @@ def main():
     argv = sys.argv[1:]
 
     help_str = """
+
+    COMMANDS
+
     -h,--help               Show help
-    --recipe recipe_file    Calculates nutrition for specified recipe
+    --recipe <recipe_name>    Calculates nutrition for specified recipe
     --code ndb_id           Downloads nutrition data from usda database ndb code
     --codes                 Downloads all nutrition data using food codes in data/index.csv and Documents/Nutrition/index.csv
     --debug                 Runs in debug mode (gives more output)
+    download <item_name>    Downloads item data, finds item json file in Nutrition/Items and uses "code" value to find data.
+                            Downloads it to Nutrition/Data
+    sync                    Copies all data, recipes, items to your local Nutrition folder
 
-    Documents/Nutrition Calculator/
-        recipes/
+    validate                Scans all files and reports any errors
+
+
+    HOW TO USE
+
+    Documents/Nutrition/
+        Recipes/
             store recipe .txt files here
 
-        units/
-            store unit overrides here
+        Items/
+            store item information here
 
-        data/
-            store nutrition data here
+        Data/
+            store item nutrition data here
 
 
     Recipe File Example:
 
-    overnight_oats.txt
+        overnight_oats.txt
 
-    1 cup oatmeal
-    1 cup oat milk
+            1 cup oatmeal
+            1 cup oat milk
+            1/3 cup blueberries
+            1 tbsp maple syrup
 
-    1/3 cup blueberries
-    1 tbsp maple syrup
+    Get nutrition information of overnight_oats.txt recipe
 
-    nutrition_calculator --recipe overnight_oats
+        nutrition_calculator --recipe overnight_oats
 
     add multiple recipes
-    nutrition_calculator --recipe overnight_oats --recipe cashew_stirfry --recipe lentil_chili
 
+        nutrition_calculator --recipe overnight_oats --recipe cashew_stirfry --recipe lentil_chili
 
-    Recipe files can exist in Documents/Nutrition Calculator/recipes
+    Recipe files exist in Documents/Nutrition/Recipes
     """
 
     print("""
@@ -69,7 +81,7 @@ def main():
     nc.setup()
 
     try:
-        opts, args = getopt.getopt(argv,"hirf:",["help","recipe=","code=","filename=","codes","debug","download","sync"])
+        opts, args = getopt.getopt(argv,"hirf:",["help","recipe=","code=","filename=","codes","debug","download","sync","validate"])
 
     except getopt.GetoptError:
         print(help_str)
@@ -99,6 +111,12 @@ def main():
     if 'sync' in argv:
         nc.sync()
         return
+
+    # validate
+    if 'validate' in argv:
+        nc.validate()
+        return
+
 
     for opt, arg in opts:
 

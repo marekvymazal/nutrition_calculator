@@ -295,6 +295,50 @@ class NutritionCalculator:
                     copyfile(src, dst)
 
 
+    def validate( self ):
+
+        print("Validating...")
+        files = []
+
+        folders = [
+            os.path.join(NutritionCalculator.module_data, "items"),
+            NutritionCalculator.local_items,
+            os.path.join(NutritionCalculator.module_data, "recipes"),
+            NutritionCalculator.local_recipes,
+            os.path.join(NutritionCalculator.module_data, "data"),
+            NutritionCalculator.local_data
+        ]
+
+        issue_cnt = 0
+
+        for folder in folders:
+            for (dirpath, dirnames, filenames) in os.walk(folder):
+                for filename in filenames:
+                    if os.path.splitext( filename )[1] == '.json':
+
+                        f = os.path.join( dirpath, filename )
+
+                        try:
+                            input_file = open(f, 'r')
+                            data = json.loads(input_file.read())
+                            input_file.close()
+                        except Exception as e:
+                            issue_cnt += 1
+
+                            print("")
+                            print("Issue #" + str(issue_cnt))
+                            print("  " + f)
+                            print("  " + str(e))
+        if issue_cnt == 1:
+            print("")
+            print("Found " + str(issue_cnt) + " issue")
+        elif issue_cnt > 1:
+            print("")
+            print("Found " + str(issue_cnt) + " issues")
+        else:
+            print("  found no issues")
+
+
     def execute( self ):
         """
         Calculates all recipes in recipe folder
