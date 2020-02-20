@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":0.98,
+        "grams":14
+    },
+    "units":{
+        "tbsp":14
+    },
+    "names":[
+        "butter",
+        "vegan butter"
+    ],
+    "code":"385303"
+}

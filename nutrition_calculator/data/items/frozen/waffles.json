@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":1.99,
+        "grams":312
+    },
+    "units":{
+        "default":39
+    },
+    "names":[
+        "waffles",
+        "multi grain waffles"
+    ]
+}

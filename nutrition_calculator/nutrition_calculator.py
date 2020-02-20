@@ -259,7 +259,8 @@ class NutritionCalculator:
                 items = line.split(',')
                 NutritionCalculator.api_key = items[1].strip()
 
-                print("Found API_KEY=" + NutritionCalculator.api_key)
+                if NutritionCalculator.debug:
+                    print("Found API_KEY=" + NutritionCalculator.api_key)
 
         # TODO: copy defaults from data directory?
 

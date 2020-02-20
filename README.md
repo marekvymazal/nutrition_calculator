@@ -1,5 +1,5 @@
 # Nutrition Calculator
-Copyright (c) 2019 Marek Vymazal
+Copyright (c) 2020 Marek Vymazal
 
 ### This program uses FoodData Central for its data
 U.S. Department of Agriculture, Agricultural Research Service.  
@@ -13,28 +13,29 @@ __for development__
 
 __downloading nutrition data (optional)__  
 For downloading ingredient nutrition data files (.json) you will need an API Key for FoodData Central obtained here:
-* [FoodData Central API KEY](https://fdc.nal.usda.gov/api-key-signup.html)
+
+[FoodData Central API KEY](https://fdc.nal.usda.gov/api-key-signup.html)  
+
 Then you will need to paste the key into the config.csv file in the Documents/Nutrition folder that is generated when the program is run.
 
 ## Instructions
 run `nutrition_calculator --help` in terminal to see help
 
 ### Download nutrition data for ingredients
-`nutrition_calculator --codes`
+`nutrition_calculator download item_name`
 
-This will download `.csv` files for ingredient ndb codes in the data/index.csv file
-`TODO: create an override file which can retarget ingredient data to different products / brands`
-
+The items fdc id code (which is used to target this data) needs to be set in the items file in Nutrition/Items/ folder.  
+This will download a `.json` data file containing nutritional information and save it in Nutrition/Data/ folder.  
 
 ## Directories
 ```
 Nutrition/
     Data/
-        ingredient.csv files go here
+        item.json data files go here
     Recipes/
         recipe.txt files go here
-    Units/
-        ingredient.txt files go here
+    Items/
+        item.json files go here
 ```
 
 ### Data for ingredients

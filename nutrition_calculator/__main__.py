@@ -48,8 +48,14 @@ def main():
     Recipe files can exist in Documents/Nutrition Calculator/recipes
     """
 
-    print("Nutrition Calculator")
-    print("Copyright 2019 Marek Vymazal")
+    print("""
+    Nutrition Calculator
+    Copyright 2020 Marek Vymazal
+
+    This program uses FoodData Central for its data
+    U.S. Department of Agriculture, Agricultural Research Service.
+    FoodData Central, 2019. fdc.nal.usda.gov.
+    """)
 
     #print(os.getcwd())
     #print(Path.home())
@@ -63,7 +69,7 @@ def main():
     nc.setup()
 
     try:
-        opts, args = getopt.getopt(argv,"hirf:d",["help","recipe=","code=","filename=","codes","debug","download","sync"])
+        opts, args = getopt.getopt(argv,"hirf:",["help","recipe=","code=","filename=","codes","debug","download","sync"])
 
     except getopt.GetoptError:
         print(help_str)
@@ -96,7 +102,8 @@ def main():
 
     for opt, arg in opts:
 
-        print(opt, arg)
+        if NutritionCalculator.debug:
+            print(opt, arg)
 
         if opt in ['-h', '--help']:
             print (help_str)
@@ -104,14 +111,12 @@ def main():
             return
 
         if opt in ['-r','--recipe']:
-            print('Recipe ' + arg)
+            if NutritionCalculator.debug:
+                print('append recipe ' + arg)
             recipes.append(arg)
             run = True
 
-        if opt in ['-d','--download']:
-            f = arg
-            print(arg)
-
+        """
         if opt in ['--code']:
             code = arg
             nc.get_data_from_code( code, filename=filename )
@@ -121,6 +126,7 @@ def main():
             nc.get_data_from_codes( os.path.join( NutritionCalculator.module_data, 'index.csv') )
             nc.get_data_from_codes( os.path.join( NutritionCalculator.local_documents, 'index.csv') )
             run = False
+        """
 
     # Execute
     if run:
