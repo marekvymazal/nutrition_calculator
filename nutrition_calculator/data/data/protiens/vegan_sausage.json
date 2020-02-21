@@ -1,14 +1,14 @@
 {
-    "name": "Tortillas",
-    "servingSize": 28.0,
+    "name": "Vegan sausage",
+    "servingSize": 44.0,
     "servingSizeUnit": "g",
     "nutrientsPerServing": {
         "calories": {
-            "value": 59.92,
+            "value": 99.88,
             "unit": "kcal"
         },
         "fat": {
-            "value": 0.501,
+            "value": 3.498,
             "unit": "g"
         },
         "saturatedFat": {
@@ -24,31 +24,31 @@
             "unit": "mg"
         },
         "sodium": {
-            "value": 0.0,
+            "value": 319.88,
             "unit": "mg"
         },
         "carbohydrates": {
-            "value": 11.001,
+            "value": 7.0,
             "unit": "g"
         },
         "fiber": {
-            "value": 1.008,
+            "value": 1.98,
             "unit": "g"
         },
         "sugars": {
-            "value": 0.0,
+            "value": 3.001,
             "unit": "g"
         },
         "protein": {
-            "value": 1.0,
+            "value": 10.001,
             "unit": "g"
         },
         "calcium": {
-            "value": 40.04,
-            "unit": "mg"
+            "value": 0.0,
+            "unit": "percentage"
         },
         "iron": {
-            "value": 0.361,
+            "value": 1.078,
             "unit": "mg"
         },
         "potassium": {
@@ -68,13 +68,24 @@
             "unit": "percentage"
         }
     },
-    "description": "TORTILLAS",
-    "fdcId": 399846,
-    "gtinUpc": "00923941",
-    "servingText": "1 TORTILLA",
+    "description": "BREAKFAST SAUSAGE",
+    "fdcId": 376744,
+    "gtinUpc": "638031611805",
+    "servingText": "2 SAUSAGES",
     "ingredients": [
-        "GROUND WHITE CORN MASA FLOUR",
-        "WATER",
-        "TRACE OF LIME."
+        "FILTERED WATER",
+        "VITAL WHEAT GLUTEN",
+        "EXPELLER PRESSED SAFFLOWER OIL",
+        "NON-SULPHURED DRIED APPLES",
+        "NATURALLY FLAVORED YEAST EXTRACT",
+        "MAPLE SYRUP",
+        "BARLEY MALT",
+        "ONION POWDER",
+        "GARLIC",
+        "NATURAL HICKORY SMOKE FLAVOR WITH TORULA YEAST",
+        "SPICES",
+        "SEA SALT",
+        "BLACK PEPPER",
+        "GINGER AND NUTMEG."
     ]
 }

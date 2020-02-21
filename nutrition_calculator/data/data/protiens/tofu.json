@@ -1,19 +1,19 @@
 {
-    "name":"Vegetable Gyoza",
+    "name":"Tofu",
     "userGenerated":"True",
-    "servingSize": 140.0,
+    "servingSize": 30.0,
     "servingSizeUnit": "g",
     "nutrientsPerServing": {
         "calories": {
-            "value": 270,
+            "value": 30,
             "unit": "kcal"
         },
         "fat": {
-            "value": 10.0,
+            "value": 1.0,
             "unit": "g"
         },
         "saturatedFat": {
-            "value": 1.5,
+            "value": 0.0,
             "unit": "g"
         },
         "transFat": {
@@ -21,19 +21,19 @@
             "unit": "g"
         },
         "cholesterol": {
-            "value": 5.0,
+            "value": 0.0,
             "unit": "mg"
         },
         "sodium": {
-            "value": 600.0,
+            "value": 730.0,
             "unit": "mg"
         },
         "carbohydrates": {
-            "value": 40.0,
+            "value": 6.0,
             "unit": "g"
         },
         "fiber": {
-            "value": 5.0,
+            "value": 0.0,
             "unit": "g"
         },
         "sugars": {
@@ -41,19 +41,31 @@
             "unit": "g"
         },
         "protein": {
-            "value": 5.0,
+            "value": 1.0,
             "unit": "g"
         },
         "calcium": {
-            "value": 6.0,
+            "value": 2.0,
             "unit": "percentage"
         },
         "iron": {
-            "value": 4.0,
+            "value": 6.0,
+            "unit": "percentage"
+        },
+        "potassium": {
+            "value": 0.0,
             "unit": "percentage"
         },
         "vitaminA": {
-            "value": 35.0,
+            "value": 4.0,
+            "unit": "percentage"
+        },
+        "vitaminC": {
+            "value": 8.0,
+            "unit": "percentage"
+        },
+        "vitaminD": {
+            "value": 0.0,
             "unit": "percentage"
         }
     }

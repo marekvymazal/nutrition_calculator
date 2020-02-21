@@ -1,18 +1,18 @@
 {
-    "name": "Vegan butter",
-    "servingSize": 14.0,
-    "servingSizeUnit": "g",
+    "name": "Almond milk",
+    "servingSize": 240.0,
+    "servingSizeUnit": "ml",
     "nutrientsPerServing": {
         "calories": {
-            "value": 99.96,
+            "value": 40.8,
             "unit": "kcal"
         },
         "fat": {
-            "value": 11.0,
+            "value": 3.0,
             "unit": "g"
         },
         "saturatedFat": {
-            "value": 3.0,
+            "value": 0.0,
             "unit": "g"
         },
         "transFat": {
@@ -24,70 +24,73 @@
             "unit": "mg"
         },
         "sodium": {
-            "value": 99.96,
+            "value": 180.0,
             "unit": "mg"
         },
         "carbohydrates": {
-            "value": 0.0,
+            "value": 1.992,
             "unit": "g"
         },
         "fiber": {
-            "value": 0.0,
+            "value": 0.96,
             "unit": "g"
         },
         "sugars": {
-            "value": 0.0,
+            "value": 1.008,
             "unit": "g"
         },
         "protein": {
-            "value": 0.0,
+            "value": 1.008,
             "unit": "g"
         },
         "calcium": {
-            "value": 0.0,
-            "unit": "percentage"
+            "value": 451.2,
+            "unit": "mg"
         },
         "iron": {
-            "value": 0.0,
-            "unit": "percentage"
+            "value": 0.72,
+            "unit": "mg"
         },
         "potassium": {
-            "value": 0.0,
-            "unit": "percentage"
+            "value": 189.6,
+            "unit": "mg"
         },
         "vitaminA": {
-            "value": 0.0,
-            "unit": "percentage"
+            "value": 499.2,
+            "unit": "IU"
         },
         "vitaminC": {
             "value": 0.0,
             "unit": "percentage"
         },
         "vitaminD": {
-            "value": 0.0,
-            "unit": "percentage"
+            "value": 100.8,
+            "unit": "IU"
         },
         "monosaturatedFat": {
-            "value": 4.999,
+            "value": 1.992,
             "unit": "g"
         },
         "polyunsaturatedFat": {
-            "value": 3.0,
+            "value": 0.504,
             "unit": "g"
         }
     },
-    "description": "EARTH BALANCE, ORIGINAL BUTTER SPREAD",
-    "fdcId": 385303,
-    "gtinUpc": "033776011703",
-    "servingText": "1 Tbsp",
+    "description": "ALMOND BEVERAGE",
+    "fdcId": 498942,
+    "gtinUpc": "00532150",
+    "servingText": "1 cup",
     "ingredients": [
-        "OIL BLEND (PALM FRUIT, CANOLA, SOYBEAN, FLAX AND OLIVE OILS)",
-        "WATER",
-        "CONTAINS LESS THAN 2% OF SALT",
-        "NATURAL FLAVOR",
-        "PEA PROTEIN",
+        "ALMOND BASE (FILTERED WATER, ALMONDS)",
+        "TRICALCIUM PHOSPHATE",
+        "NATURAL VANILLA FLAVOR WITH OTHER NATURAL FLAVORS",
+        "SEA SALT",
+        "GELLAN GUM",
+        "DIPOTASSIUM PHOSPHATE",
+        "XANTHAN GUM",
         "SUNFLOWER LECITHIN",
-        "LACTIC ACID (NON-DAIRY)",
-        "AND NATURALLY EXTRACTED ANNATTO (COLOR)."
+        "VITAMIN A PALMITATE",
+        "ERGOCALCIFEROL (VITAMIN D2)",
+        "D-ALPHA TOCOPHEROL (VITAMIN E)."
     ]
 }

@@ -198,7 +198,7 @@ class NutritionCalculator:
 
                 code = self.get_code(os.path.join(relpath, filename))
                 if code != None:
-                    print(code + " - " + label)
+                    print(str(code) + " - " + label)
                     data = self.get_data_from_fdcid( code, item_name=filename )
                     self.save_item_data( data, relpath, filename)
 
@@ -245,10 +245,10 @@ class NutritionCalculator:
         """
         # get configuration files
         documents_path = os.path.join(Path.home(),"Documents")
-        NutritionCalculator.local_documents = os.path.join(documents_path, "Nutrition")
-        NutritionCalculator.local_data = os.path.join(NutritionCalculator.local_documents, "Data")
-        NutritionCalculator.local_recipes = os.path.join(NutritionCalculator.local_documents, "Recipes")
-        NutritionCalculator.local_items = os.path.join(NutritionCalculator.local_documents, "Items")
+        NutritionCalculator.local_documents = os.path.join(documents_path, "nutrition")
+        NutritionCalculator.local_data = os.path.join(NutritionCalculator.local_documents, "data")
+        NutritionCalculator.local_recipes = os.path.join(NutritionCalculator.local_documents, "recipes")
+        NutritionCalculator.local_items = os.path.join(NutritionCalculator.local_documents, "items")
 
         folders = [
             NutritionCalculator.local_documents,
@@ -295,8 +295,8 @@ class NutritionCalculator:
         files = []
 
         targets = [
-            [os.path.join(NutritionCalculator.module_data, "items"), NutritionCalculator.local_items],
             [os.path.join(NutritionCalculator.module_data, "recipes"), NutritionCalculator.local_recipes],
+            [os.path.join(NutritionCalculator.module_data, "items"), NutritionCalculator.local_items],
             [os.path.join(NutritionCalculator.module_data, "data"), NutritionCalculator.local_data]
         ]
 
@@ -304,10 +304,13 @@ class NutritionCalculator:
             for (dirpath, dirnames, filenames) in os.walk(target[0]):
                 for filename in filenames:
 
+                    if not os.path.splitext(filename)[1] in ['.json','.txt']:
+                        continue
+
                     src = os.path.join( dirpath, filename)
 
                     relpath = dirpath[len(target[0])+1:]
-                    relpath = relpath.replace('_',' ').title()
+                    #relpath = relpath.replace('_',' ').title()
 
                     target_folder = os.path.join( target[1], relpath)
                     if not os.path.exists( target_folder ):

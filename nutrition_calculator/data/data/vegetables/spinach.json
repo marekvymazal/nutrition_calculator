@@ -1,0 +1,181 @@
+{
+    "name": "Spinach",
+    "servingSize": 100,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 23.0,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 0.39,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 0.063,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 79.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 3.63,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 2.2,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 0.42,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 2.86,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 99.0,
+            "unit": "mg"
+        },
+        "iron": {
+            "value": 2.71,
+            "unit": "mg"
+        },
+        "potassium": {
+            "value": 558.0,
+            "unit": "mg"
+        },
+        "vitaminA": {
+            "value": 469.0,
+            "unit": "\u00b5g"
+        },
+        "vitaminC": {
+            "value": 28.1,
+            "unit": "mg"
+        },
+        "vitaminD": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "water": {
+            "value": 91.4,
+            "unit": "g"
+        },
+        "magnesium": {
+            "value": 79.0,
+            "unit": "mg"
+        },
+        "phosphorus": {
+            "value": 49.0,
+            "unit": "mg"
+        },
+        "zinc": {
+            "value": 0.53,
+            "unit": "mg"
+        },
+        "copper": {
+            "value": 0.13,
+            "unit": "mg"
+        },
+        "selenium": {
+            "value": 1.0,
+            "unit": "\u00b5g"
+        },
+        "caroteneBeta": {
+            "value": 5626.0,
+            "unit": "\u00b5g"
+        },
+        "vitaminE": {
+            "value": 2.03,
+            "unit": "mg"
+        },
+        "lutein_zeaxanthin": {
+            "value": 12198.0,
+            "unit": "\u00b5g"
+        },
+        "thiamin": {
+            "value": 0.078,
+            "unit": "mg"
+        },
+        "riboflavin": {
+            "value": 0.189,
+            "unit": "mg"
+        },
+        "niacin": {
+            "value": 0.724,
+            "unit": "mg"
+        },
+        "vitaminB6": {
+            "value": 0.195,
+            "unit": "mg"
+        },
+        "folateTotal": {
+            "value": 194.0,
+            "unit": "\u00b5g"
+        },
+        "choline": {
+            "value": 19.3,
+            "unit": "mg"
+        },
+        "vitaminK": {
+            "value": 482.9,
+            "unit": "\u00b5g"
+        },
+        "folateFood": {
+            "value": 194.0,
+            "unit": "\u00b5g"
+        },
+        "folateDFE": {
+            "value": 194.0,
+            "unit": "\u00b5g"
+        },
+        "14:0": {
+            "value": 0.01,
+            "unit": "g"
+        },
+        "16:0": {
+            "value": 0.049,
+            "unit": "g"
+        },
+        "18:0": {
+            "value": 0.004,
+            "unit": "g"
+        },
+        "18:1": {
+            "value": 0.005,
+            "unit": "g"
+        },
+        "18:2": {
+            "value": 0.026,
+            "unit": "g"
+        },
+        "18:3": {
+            "value": 0.138,
+            "unit": "g"
+        },
+        "16:1": {
+            "value": 0.005,
+            "unit": "g"
+        },
+        "monosaturatedFat": {
+            "value": 0.01,
+            "unit": "g"
+        },
+        "polyunsaturatedFat": {
+            "value": 0.165,
+            "unit": "g"
+        }
+    },
+    "description": "Spinach, raw",
+    "fdcId": 342205
+}

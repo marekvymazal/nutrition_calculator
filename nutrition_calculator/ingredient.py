@@ -14,39 +14,10 @@ class Ingredient(DataObject):
 
     # this list matches items in the data csv files and then uses the id as the attribute to set
     nutrient_list = {
-        "calories":{
-            "foodNutrients":{
-                "name":"Energy",
-                "unitName":"kcal"
-            },
-            "labelNutrients":{
-                "name":"calories"
-            }
-        },
-        "fat":{
-            "foodNutrients":{
-                "name":"Total lipid (fat)"
-            },
-            "labelNutrients":{
-                "name":"fat"
-            }
-        },
-        "protein":{
-            "foodNutrients":{
-                "name":"Protein"
-            },
-            "labelNutrients":{
-                "name":"protein"
-            }
-        },
-        "carbs":{
-            "foodNutrients":{
-                "name":"Carbohydrate, by difference"
-            },
-            "labelNutrients":{
-                "name":"carbohydrates"
-            }
-        }
+        "calories":"calories",
+        "fat":"fat",
+        "protein":"protein",
+        "carbohydrates":"carbs"
     }
 
     def __init__(self, amount, unit, name, relpath=""):
@@ -180,50 +151,13 @@ class Ingredient(DataObject):
         f.close()
 
         # get units
-        found = False
         to_100g = 1
-        use_label = False
 
-        try:
-            # is 100g?
-            if 'inputFoods' in data:
-                for u in data['inputFoods']:
-                    if u['unit'] == 'GM': # gram weight
-                        if u['gramWeight'] == 100:
-                            #print("  using 100 g")
-                            pass
-                        else:
-                            #print("  gram weight is not 100g")
-                            pass
+        if data['servingSize'] != 100:
+            to_100g = 100 / data['servingSize']
 
-                        found = True
-
-        except:
-            pass
-
-        if not found:
-            try:
-                if data["servingSizeUnit"] == "ml":
-                    #print("  using 100 ml?")
-                    found = True
-                elif data["servingSizeUnit"] == "g":
-                    #print("  using 100 g")
-                    if 'userGenerated' in data and data['userGenerated'] == "True":
-                        use_label = True
-                        if data['servingSize'] != 100:
-                            to_100g = 100 / data['servingSize']
-
-                            if NC.debug:
-                                print( "  to 100g:" + str(to_100g) )
-
-                    found = True
-
-
-            except KeyError:
-                pass
-
-        if not found and NC.debug:
-            print("  COULD NOT FIND UNIT IN " + self.name)
+            if NC.debug:
+                print( "  to 100g:" + str(to_100g) )
 
         if NC.debug:
             print("unit map")
@@ -232,29 +166,12 @@ class Ingredient(DataObject):
 
 
         # get values
-        # store values of 1g
-        if not use_label:
+        if 'nutrientsPerServing' in data:
             for nutrient in Ingredient.nutrient_list:
-                if 'foodNutrients' in data:
-                    for item in data['foodNutrients']:
-                        if Ingredient.nutrient_list[nutrient]['foodNutrients']['name'] == item['nutrient']['name']:
-                            if 'unitName' in Ingredient.nutrient_list[nutrient]['foodNutrients']:
-                                if Ingredient.nutrient_list[nutrient]['foodNutrients']['unitName'] != item['nutrient']['unitName']:
-                                    # checks to see if correct unit, ex kcal for calories
-                                    continue
-
-                            val = item["amount"] * to_100g * 0.01 * self.grams
-                            val = round(val, 2)
-                            setattr(self, nutrient, val)
-        else:
-            # use label / user generated ( not downloaded from database )
-            for nutrient in Ingredient.nutrient_list:
-                if 'labelNutrients' in data:
-                    for item in data['labelNutrients']:
-                        if Ingredient.nutrient_list[nutrient]['labelNutrients']['name'] == item:
-                            val = (data['labelNutrients'][item]["value"] * to_100g) * 0.01 * self.grams
-                            val = round(val, 2)
-                            setattr(self, nutrient, val)
+                if nutrient in data['nutrientsPerServing']:
+                    val = (data['nutrientsPerServing'][nutrient]["value"] * to_100g) * 0.01 * self.grams
+                    val = round(val, 2)
+                    setattr(self, Ingredient.nutrient_list[nutrient], val)
 
 
         # calculate missing data

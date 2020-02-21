@@ -1,0 +1,181 @@
+{
+    "name": "Oatmeal",
+    "servingSize": 100,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 379.0,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 6.52,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 1.11,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 6.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 67.7,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 10.1,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 0.99,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 13.15,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 52.0,
+            "unit": "mg"
+        },
+        "iron": {
+            "value": 4.25,
+            "unit": "mg"
+        },
+        "potassium": {
+            "value": 362.0,
+            "unit": "mg"
+        },
+        "vitaminA": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminC": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminD": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "water": {
+            "value": 10.84,
+            "unit": "g"
+        },
+        "magnesium": {
+            "value": 138.0,
+            "unit": "mg"
+        },
+        "phosphorus": {
+            "value": 410.0,
+            "unit": "mg"
+        },
+        "zinc": {
+            "value": 3.64,
+            "unit": "mg"
+        },
+        "copper": {
+            "value": 0.391,
+            "unit": "mg"
+        },
+        "selenium": {
+            "value": 28.9,
+            "unit": "\u00b5g"
+        },
+        "vitaminE": {
+            "value": 0.42,
+            "unit": "mg"
+        },
+        "lutein_zeaxanthin": {
+            "value": 180.0,
+            "unit": "\u00b5g"
+        },
+        "thiamin": {
+            "value": 0.46,
+            "unit": "mg"
+        },
+        "riboflavin": {
+            "value": 0.155,
+            "unit": "mg"
+        },
+        "niacin": {
+            "value": 1.125,
+            "unit": "mg"
+        },
+        "vitaminB6": {
+            "value": 0.1,
+            "unit": "mg"
+        },
+        "folateTotal": {
+            "value": 32.0,
+            "unit": "\u00b5g"
+        },
+        "choline": {
+            "value": 40.4,
+            "unit": "mg"
+        },
+        "vitaminK": {
+            "value": 2.0,
+            "unit": "\u00b5g"
+        },
+        "folateFood": {
+            "value": 32.0,
+            "unit": "\u00b5g"
+        },
+        "folateDFE": {
+            "value": 32.0,
+            "unit": "\u00b5g"
+        },
+        "12:0": {
+            "value": 0.02,
+            "unit": "g"
+        },
+        "14:0": {
+            "value": 0.01,
+            "unit": "g"
+        },
+        "16:0": {
+            "value": 0.94,
+            "unit": "g"
+        },
+        "18:0": {
+            "value": 0.06,
+            "unit": "g"
+        },
+        "18:1": {
+            "value": 1.97,
+            "unit": "g"
+        },
+        "18:2": {
+            "value": 2.2,
+            "unit": "g"
+        },
+        "18:3": {
+            "value": 0.1,
+            "unit": "g"
+        },
+        "16:1": {
+            "value": 0.01,
+            "unit": "g"
+        },
+        "monosaturatedFat": {
+            "value": 1.98,
+            "unit": "g"
+        },
+        "polyunsaturatedFat": {
+            "value": 2.3,
+            "unit": "g"
+        }
+    },
+    "description": "Oats, raw",
+    "fdcId": 340734
+}

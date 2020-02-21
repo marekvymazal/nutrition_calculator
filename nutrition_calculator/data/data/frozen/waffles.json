@@ -1,43 +1,56 @@
 {
-    "userGenerated": "True",
+    "name":"Waffles",
+    "userGenerated":"True",
     "servingSize": 78.0,
     "servingSizeUnit": "g",
-    "labelNutrients": {
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 230,
+            "unit": "kcal"
+        },
         "fat": {
-            "value": 9.0
+            "value": 9.0,
+            "unit": "g"
         },
         "saturatedFat": {
-            "value": 1.0
+            "value": 1.0,
+            "unit": "g"
         },
         "transFat": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "g"
         },
         "cholesterol": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "mg"
         },
         "sodium": {
-            "value": 330.0
+            "value": 330.0,
+            "unit": "mg"
         },
         "carbohydrates": {
-            "value": 31.0
+            "value": 31.0,
+            "unit": "g"
         },
         "fiber": {
-            "value": 2.0
+            "value": 2.0,
+            "unit": "g"
         },
         "sugars": {
-            "value": 7.0
+            "value": 7.0,
+            "unit": "g"
         },
         "protein": {
-            "value": 5.0
+            "value": 5.0,
+            "unit": "g"
         },
         "calcium": {
-            "percent":"2"
+            "value": 2.0,
+            "unit": "percentage"
         },
         "iron": {
-            "percent": "8"
-        },
-        "calories": {
-            "value": 230
+            "value": 8.0,
+            "unit": "percentage"
         }
     }
 }

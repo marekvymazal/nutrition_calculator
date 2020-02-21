@@ -95,49 +95,51 @@ def main():
         sys.exit()
         return
 
-    # download
-    if 'download' == argv[0]:
+    if len(argv) > 0:
 
-        if 'all' == argv[1]:
-            # download all
-            nc.download_all()
-        else:
-            index = argv.index('download')
-            items = argv[index+1:]
-            for item in items:
-                print("trying to download: " + item)
-                nc.download_item(item)
+        # download
+        if 'download' == argv[0]:
 
-        return
+            if 'all' == argv[1]:
+                # download all
+                nc.download_all()
+            else:
+                index = argv.index('download')
+                items = argv[index+1:]
+                for item in items:
+                    print("trying to download: " + item)
+                    nc.download_item(item)
 
-    # sync
-    if 'sync' == argv[0]:
-        nc.sync()
-        return
+            return
 
-    # validate
-    if 'validate' == argv[0]:
-        nc.validate()
-        return
+        # sync
+        if 'sync' == argv[0]:
+            nc.sync()
+            return
 
-    # new
-    if 'new' == argv[0]:
-        index = argv.index('new')
-        _type = argv[index+1]
-        _name = argv[index+2]
+        # validate
+        if 'validate' == argv[0]:
+            nc.validate()
+            return
 
-        nc.add_new(_type, _name)
+        # new
+        if 'new' == argv[0]:
+            index = argv.index('new')
+            _type = argv[index+1]
+            _name = argv[index+2]
 
-        return
+            nc.add_new(_type, _name)
 
-    # calculate recipes
-    if 'recipe' == argv[0]:
-        for x in range(1,len(argv)):
-            if NutritionCalculator.debug:
-                print('append recipe ' + argv[x])
-            recipes.append(argv[x])
+            return
 
-        run = True
+        # calculate recipes
+        if 'recipe' == argv[0]:
+            for x in range(1,len(argv)):
+                if NutritionCalculator.debug:
+                    print('append recipe ' + argv[x])
+                recipes.append(argv[x])
+
+            run = True
 
     # Execute
     if run:

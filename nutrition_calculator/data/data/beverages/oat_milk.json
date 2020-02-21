@@ -1,18 +1,18 @@
 {
-    "name": "Tortillas",
-    "servingSize": 28.0,
-    "servingSizeUnit": "g",
+    "name": "Oat milk",
+    "servingSize": 240.0,
+    "servingSizeUnit": "ml",
     "nutrientsPerServing": {
         "calories": {
-            "value": 59.92,
+            "value": 120.0,
             "unit": "kcal"
         },
         "fat": {
-            "value": 0.501,
+            "value": 4.992,
             "unit": "g"
         },
         "saturatedFat": {
-            "value": 0.0,
+            "value": 0.504,
             "unit": "g"
         },
         "transFat": {
@@ -24,36 +24,36 @@
             "unit": "mg"
         },
         "sodium": {
-            "value": 0.0,
+            "value": 100.8,
             "unit": "mg"
         },
         "carbohydrates": {
-            "value": 11.001,
+            "value": 16.008,
             "unit": "g"
         },
         "fiber": {
-            "value": 1.008,
+            "value": 1.92,
             "unit": "g"
         },
         "sugars": {
-            "value": 0.0,
+            "value": 7.008,
             "unit": "g"
         },
         "protein": {
-            "value": 1.0,
+            "value": 3.0,
             "unit": "g"
         },
         "calcium": {
-            "value": 40.04,
+            "value": 350.4,
             "unit": "mg"
         },
         "iron": {
-            "value": 0.361,
+            "value": 0.288,
             "unit": "mg"
         },
         "potassium": {
-            "value": 0.0,
-            "unit": "percentage"
+            "value": 388.8,
+            "unit": "mg"
         },
         "vitaminA": {
             "value": 0.0,
@@ -66,15 +66,34 @@
         "vitaminD": {
             "value": 0.0,
             "unit": "percentage"
+        },
+        "phosphorus": {
+            "value": 268.8,
+            "unit": "mg"
+        },
+        "riboflavin": {
+            "value": 0.6,
+            "unit": "mg"
+        },
+        "vitaminB12": {
+            "value": 1.2,
+            "unit": "\u00b5g"
         }
     },
-    "description": "TORTILLAS",
-    "fdcId": 399846,
-    "gtinUpc": "00923941",
-    "servingText": "1 TORTILLA",
+    "description": "THE ORIGINAL OAT-MILK",
+    "fdcId": 719016,
+    "gtinUpc": "0190646641016",
+    "servingText": "1 cup",
     "ingredients": [
-        "GROUND WHITE CORN MASA FLOUR",
-        "WATER",
-        "TRACE OF LIME."
+        "OATMILK (WATER, OATS). CONTAINS 2% OR LESS OF: RAPESEED OIL",
+        "DIPOTASSIUM PHOSPHATE",
+        "CALCIUM CARBONATE",
+        "TRICALCIUM PHOSPHATE",
+        "SEA SALT",
+        "DICALCIUM PHOSPHATE",
+        "RIBOFLAVIN",
+        "VITAMIN A",
+        "VITAMIN D2",
+        "VITAMIN B12."
     ]
 }

@@ -1,46 +1,56 @@
 {
-    "userGenerated": "True",
+    "name":"Maple syrup",
+    "userGenerated":"True",
     "servingSize": 30.0,
     "servingSizeUnit": "g",
-    "labelNutrients": {
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 100,
+            "unit": "kcal"
+        },
         "fat": {
-            "value": 0.0
+            "value": 1.0,
+            "unit": "g"
         },
         "saturatedFat": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "g"
         },
         "transFat": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "g"
         },
         "cholesterol": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "mg"
         },
         "sodium": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "mg"
         },
         "carbohydrates": {
-            "value": 27.0
+            "value": 27.0,
+            "unit": "g"
         },
         "fiber": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "g"
         },
         "sugars": {
-            "value": 24.0
+            "value": 24.0,
+            "unit": "g"
         },
         "protein": {
-            "value": 5.0
+            "value": 5.0,
+            "unit": "g"
         },
         "calcium": {
-            "percent":"4"
-        },
-        "iron": {
-            "percent": "0"
+            "value": 4.0,
+            "unit": "percentage"
         },
         "potassium": {
-            "percent": "2"
-        },
-        "calories": {
-            "value": 100
+            "value": 2.0,
+            "unit": "percentage"
         }
     }
 }
