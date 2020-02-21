@@ -66,6 +66,9 @@ def main():
         nutrition_calculator --recipe overnight_oats --recipe cashew_stirfry --recipe lentil_chili
 
     Recipe files exist in Documents/Nutrition/Recipes
+
+    SEARCH FOR FOOD CODES (FDCID) at:
+        https://fdc.nal.usda.gov/fdc-app.html#/
     """
 
     print("""
@@ -75,6 +78,7 @@ def main():
     This program uses FoodData Central for its data
     U.S. Department of Agriculture, Agricultural Research Service.
     FoodData Central, 2019. fdc.nal.usda.gov.
+
     """)
 
     run = True
