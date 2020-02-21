@@ -1,43 +1,72 @@
 {
-    "userGenerated": "True",
-    "servingSize": 78.0,
+    "name":"Template",
+    "userGenerated":"True",
+    "servingSize": 0,
     "servingSizeUnit": "g",
-    "labelNutrients": {
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 0,
+            "unit": "kcal"
+        },
         "fat": {
-            "value": 9.0
+            "value": 0.0,
+            "unit": "g"
         },
         "saturatedFat": {
-            "value": 1.0
+            "value": 0.0,
+            "unit": "g"
         },
         "transFat": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "g"
         },
         "cholesterol": {
-            "value": 0.0
+            "value": 0.0,
+            "unit": "mg"
         },
         "sodium": {
-            "value": 330.0
+            "value": 0.0,
+            "unit": "mg"
         },
         "carbohydrates": {
-            "value": 31.0
+            "value": 0.0,
+            "unit": "g"
         },
         "fiber": {
-            "value": 2.0
+            "value": 0.0,
+            "unit": "g"
         },
         "sugars": {
-            "value": 7.0
+            "value": 0.0,
+            "unit": "g"
         },
         "protein": {
-            "value": 5.0
+            "value": 0.0,
+            "unit": "g"
         },
         "calcium": {
-            "percent":"2"
+            "value": 0.0,
+            "unit": "percentage"
         },
         "iron": {
-            "percent": "8"
+            "value": 0.0,
+            "unit": "percentage"
         },
-        "calories": {
-            "value": 230
+        "potassium": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminA": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminC": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminD": {
+            "value": 0.0,
+            "unit": "percentage"
         }
     }
 }

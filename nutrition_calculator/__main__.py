@@ -16,12 +16,16 @@ def main():
     COMMANDS
 
     -h,--help               Show help
-    --recipe <recipe_name>    Calculates nutrition for specified recipe
-    --code ndb_id           Downloads nutrition data from usda database ndb code
-    --codes                 Downloads all nutrition data using food codes in data/index.csv and Documents/Nutrition/index.csv
+
     --debug                 Runs in debug mode (gives more output)
-    download <item_name>    Downloads item data, finds item json file in Nutrition/Items and uses "code" value to find data.
-                            Downloads it to Nutrition/Data
+
+    recipe <recipe_name>    Calculates nutrition for specified recipe
+
+    download <item_name> ...   Downloads item data, finds item json file in Nutrition/Items and uses "code" value to find data.
+                               Downloads it to Nutrition/Data
+
+    download all                 Downloads all items with codes
+
     sync                    Copies all data, recipes, items to your local Nutrition folder
 
     validate                Scans all files and reports any errors
@@ -73,56 +77,51 @@ def main():
     FoodData Central, 2019. fdc.nal.usda.gov.
     """)
 
-    #print(os.getcwd())
-    #print(Path.home())
-    #module_path = os.path.dirname(__file__)
-    #data_path = os.path.join(module_path,'data')
-
     run = True
     recipes = []
 
     nc = NutritionCalculator()
     nc.setup()
 
-    try:
-        opts, args = getopt.getopt(argv,"hirf:",["help","recipe=","code=","filename=","codes","debug","download","sync","validate", 'new'])
+    # enable debug?
+    if '--debug' in argv:
+        NutritionCalculator.debug = True
+        del argv[argv.index('--debug')]
+        print(argv)
 
-    except getopt.GetoptError:
-        print(help_str)
-        sys.exit(2)
+    # show help?
+    if any(arg in ['-h','--help'] for arg in argv):
+        print (help_str)
+        sys.exit()
         return
 
-    for opt, arg in opts:
-        if opt in ['--debug']:
-            NutritionCalculator.debug = True
-
-    filename = None
-    for opt, arg in opts:
-        if opt in ['-f', '--filename']:
-            filename = arg
-
     # download
-    if 'download' in argv:
-        index = argv.index('download')
-        items = argv[index+1:]
-        for item in items:
-            print("trying to download: " + item)
-            nc.download_item(item)
+    if 'download' == argv[0]:
+
+        if 'all' == argv[1]:
+            # download all
+            nc.download_all()
+        else:
+            index = argv.index('download')
+            items = argv[index+1:]
+            for item in items:
+                print("trying to download: " + item)
+                nc.download_item(item)
 
         return
 
     # sync
-    if 'sync' in argv:
+    if 'sync' == argv[0]:
         nc.sync()
         return
 
     # validate
-    if 'validate' in argv:
+    if 'validate' == argv[0]:
         nc.validate()
         return
 
     # new
-    if 'new' in argv:
+    if 'new' == argv[0]:
         index = argv.index('new')
         _type = argv[index+1]
         _name = argv[index+2]
@@ -131,34 +130,14 @@ def main():
 
         return
 
-
-    for opt, arg in opts:
-
-        if NutritionCalculator.debug:
-            print(opt, arg)
-
-        if opt in ['-h', '--help']:
-            print (help_str)
-            sys.exit()
-            return
-
-        if opt in ['-r','--recipe']:
+    # calculate recipes
+    if 'recipe' == argv[0]:
+        for x in range(1,len(argv)):
             if NutritionCalculator.debug:
-                print('append recipe ' + arg)
-            recipes.append(arg)
-            run = True
+                print('append recipe ' + argv[x])
+            recipes.append(argv[x])
 
-        """
-        if opt in ['--code']:
-            code = arg
-            nc.get_data_from_code( code, filename=filename )
-            run = False
-
-        if opt in ['--codes']:
-            nc.get_data_from_codes( os.path.join( NutritionCalculator.module_data, 'index.csv') )
-            nc.get_data_from_codes( os.path.join( NutritionCalculator.local_documents, 'index.csv') )
-            run = False
-        """
+        run = True
 
     # Execute
     if run:

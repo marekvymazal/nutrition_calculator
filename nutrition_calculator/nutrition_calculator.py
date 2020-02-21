@@ -6,6 +6,8 @@ from .recipe import Recipe
 from .predictor import Predictor
 from .data_object import DataObject
 
+from . import data_converter
+
 import pandas as pd
 import requests
 import json
@@ -53,41 +55,14 @@ class NutritionCalculator:
             data = json.loads(r.text)
             print(json.dumps(data, indent=4))
 
+            data_converter.convert_usda_data( data )
+
             if (filename == None):
                 return
 
             f = open(os.path.join(NutritionCalculator.local_data, filename + ".json"), 'w', encoding='utf-8')
             json.dump(data, f, indent=4)
             f.close()
-
-
-    def get_data_from_codes( self, code_file ):
-        """
-        Downloads all csv item/ingredient data from a list of NDB codes in code file
-        """
-        if not os.path.exists( code_file ):
-            return
-
-        data = open(code_file, encoding='utf-8', mode='r')
-        for line in data:
-            if line.startswith('#'):
-                continue
-
-            if line.strip() == '':
-                continue
-
-            print(line)
-
-            items = line.split(',')
-
-            code = items[0].strip()
-            filename = items[1].strip()
-
-            # TODO: get alt names and use them
-
-            self.get_data_from_code(code, filename=filename)
-
-        return
 
 
     def find_item( potential_names ):
@@ -136,13 +111,59 @@ class NutritionCalculator:
 
     def get_code(self, item_file):
         if NutritionCalculator.debug:
-            print(NutritionCalculator.local_items + item_file + '.json')
+            print(os.path.join(NutritionCalculator.local_items ,item_file + '.json'))
 
         input_file = open(os.path.join(NutritionCalculator.local_items, item_file + '.json'), 'r')
         data = json.loads(input_file.read())
         input_file.close()
 
-        return data['code']
+        if 'code' in data:
+            return data['code']
+
+        return None
+
+
+
+    def get_data_from_fdcid( self, code, item_name=None):
+        # download data from code
+        url = 'https://api.nal.usda.gov/fdc/v1/' + code
+        params = {'api_key': NutritionCalculator.api_key}
+
+        r = requests.get(url, params=params)
+
+        if r.status_code == 200:
+            if NutritionCalculator.debug:
+                print("  received data")
+
+            data = json.loads(r.text)
+
+            data = data_converter.convert_usda_data( data )
+
+            # replace name
+            if item_name != None:
+                data['name'] = item_name.replace('_',' ').capitalize()
+
+            # remove user generated string
+            del data['userGenerated']
+
+            return data
+
+        return None
+
+
+    def save_item_data( self, data, relpath, file_name ):
+
+        if data == None:
+            return
+
+        if not os.path.exists(os.path.join(NutritionCalculator.local_data, relpath)):
+            os.makedirs(os.path.join(NutritionCalculator.local_data, relpath))
+
+        data_file = os.path.join(NutritionCalculator.local_data, relpath, file_name) + ".json"
+
+        f = open(data_file, 'w', encoding='utf-8')
+        json.dump(data, f, indent=4)
+        f.close()
 
 
     def download_item( self, item_name ):
@@ -156,29 +177,31 @@ class NutritionCalculator:
         code = self.get_code(os.path.join(relpath, file_name))
         print("  " + code)
 
-        # download data from code
-        url = 'https://api.nal.usda.gov/fdc/v1/' + code
-        params = {'api_key': NutritionCalculator.api_key}
+        if code != None:
+            data = self.get_data_from_fdcid( code, item_name=file_name )
+            self.save_item_data( data, relpath, file_name)
 
-        r = requests.get(url, params=params)
 
-        if r.status_code == 200:
-            print("  received data")
-            data = json.loads(r.text)
-            #print(json.dumps(data, indent=4))
+    def download_all( self ):
 
-            if not os.path.exists(os.path.join(NutritionCalculator.local_data, relpath)):
-                os.makedirs(os.path.join(NutritionCalculator.local_data, relpath))
+        for (dirpath, dirnames, filenames) in os.walk(NutritionCalculator.local_items):
+            for filename in filenames:
+                #src = os.path.join( dirpath, filename)
 
-            data_file = os.path.join(NutritionCalculator.local_data, relpath, file_name) + ".json"
+                relpath = dirpath[len(NutritionCalculator.local_items)+1:]
+                filename, ext = os.path.splitext(filename)
 
-            f = open(data_file, 'w', encoding='utf-8')
-            json.dump(data, f, indent=4)
-            f.close()
+                if ext != '.json':
+                    continue
 
-            print("  Saved data as: " + data_file)
+                label = relpath + '/' + filename
 
-        return
+                code = self.get_code(os.path.join(relpath, filename))
+                if code != None:
+                    print(code + " - " + label)
+                    data = self.get_data_from_fdcid( code, item_name=filename )
+                    self.save_item_data( data, relpath, filename)
+
 
 
     def process_recipes( self, recipes ):
