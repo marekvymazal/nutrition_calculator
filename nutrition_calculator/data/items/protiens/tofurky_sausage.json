@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":3.49,
+        "grams":396
+    },
+    "units":{
+        "default":99
+    },
+    "names":[
+        "tofurky sausage"
+    ],
+    "code":"384241"
+}

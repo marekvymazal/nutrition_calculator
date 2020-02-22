@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":1.99,
+        "grams":640
+    },
+    "units":{
+        "default":64
+    },
+    "names":[
+        "hashbrown",
+        "hashbrowns"
+    ],
+    "code":"493738"
+}

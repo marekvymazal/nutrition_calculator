@@ -1,0 +1,72 @@
+{
+    "name":"Ground coffee",
+    "userGenerated":"True",
+    "servingSize": 20,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 0,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "iron": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "potassium": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminA": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminC": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminD": {
+            "value": 0.0,
+            "unit": "percentage"
+        }
+    }
+}

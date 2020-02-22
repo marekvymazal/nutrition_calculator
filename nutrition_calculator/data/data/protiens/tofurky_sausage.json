@@ -1,0 +1,88 @@
+{
+    "name": "Tofurky sausage",
+    "servingSize": 99.0,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 280.17,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 13.999,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 1.505,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 619.74,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 7.999,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 0.99,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 3.0,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 29.997,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 39.6,
+            "unit": "mg"
+        },
+        "iron": {
+            "value": 3.604,
+            "unit": "mg"
+        },
+        "potassium": {
+            "value": 260.37,
+            "unit": "mg"
+        },
+        "vitaminA": {
+            "value": 99.99,
+            "unit": "IU"
+        },
+        "vitaminC": {
+            "value": 0.0,
+            "unit": "percentage"
+        },
+        "vitaminD": {
+            "value": 0.0,
+            "unit": "percentage"
+        }
+    },
+    "description": "ITALIAN ORIGINAL SAUSAGE",
+    "fdcId": 384241,
+    "gtinUpc": "025583006027",
+    "servingText": "3.5 ONZ",
+    "ingredients": [
+        "ORGANIC TOFU (WATER, ORGANIC SOYBEANS, MAGNESIUM CHLORIDE, CALCIUM CHLORIDE)",
+        "VITAL WHEAT GLUTEN",
+        "EXPELLER PRESSED NON-GMO CANOLA OIL",
+        "WATER",
+        "SHOYU SOY SAUCE (WATER, NON-GMO SOYBEANS, WHEAT, SALT, CULTURE)",
+        "ORGANIC SOY FLOUR",
+        "SUN DRIED TOMATOES",
+        "BASIL",
+        "GRANULATED GARLIC",
+        "SEA SALT",
+        "SPICES."
+    ]
+}

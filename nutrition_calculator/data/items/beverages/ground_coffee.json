@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":5.99,
+        "grams":340
+    },
+    "units":{
+        "cup":20
+    },
+    "names":[
+        "ground coffee",
+        "coffee"
+    ]
+}
