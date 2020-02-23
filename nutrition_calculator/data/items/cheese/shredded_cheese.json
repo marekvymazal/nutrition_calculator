@@ -4,10 +4,10 @@
         "grams":340
     },
     "units":{
-        "cup":20
+        "default":28,
+        "cup":56
     },
     "names":[
-        "ground coffee",
-        "coffee"
+        "shredded cheese"
     ]
 }

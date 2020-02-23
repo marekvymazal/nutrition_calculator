@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":2.49,
+        "grams":400
+    },
+    "units":{
+        "default":100
+    },
+    "names":[
+        "ciabatta roll"
+    ],
+    "code":"171177"
+}

@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":2.99,
+        "grams":300
+    },
+    "units":{
+        "default":300,
+        "container":300,
+        "package":300
+    },
+    "names":[
+        "pad thai"
+    ]
+}

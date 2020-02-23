@@ -38,11 +38,7 @@ class Ingredient(DataObject):
 
         self.price_per_gram = 0.0
 
-        #print (self.name)
-
-
-        # get amount
-        self.amount = float(sum(Fraction(s) for s in amount.split()))
+        self.amount = amount
 
 
         # get unit data

@@ -91,7 +91,9 @@ def main():
     if '--debug' in argv:
         NutritionCalculator.debug = True
         del argv[argv.index('--debug')]
-        print(argv)
+        print('argv')
+        for arg in argv:
+            print("  " + arg)
 
     # show help?
     if any(arg in ['-h','--help'] for arg in argv):

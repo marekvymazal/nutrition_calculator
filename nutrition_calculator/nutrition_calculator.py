@@ -12,7 +12,7 @@ import pandas as pd
 import requests
 import json
 
-from shutil import copyfile
+from shutil import copy
 
 class NutritionCalculator:
 
@@ -318,9 +318,10 @@ class NutritionCalculator:
 
                     dst = os.path.join( target_folder, filename)
 
+                    print(src)
                     print( "  " + dst )
 
-                    copyfile(src, dst)
+                    copy(src, dst)
 
 
     def validate( self ):

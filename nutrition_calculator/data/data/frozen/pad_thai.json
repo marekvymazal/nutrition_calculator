@@ -1,0 +1,56 @@
+{
+    "name":"Pad thai",
+    "userGenerated":"True",
+    "servingSize": 300.0,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 520,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 21.0,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 8.0,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 830.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 74.0,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 6.0,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 29.0,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 9.0,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 8.0,
+            "unit": "percentage"
+        },
+        "iron": {
+            "value": 10.0,
+            "unit": "percentage"
+        }
+    }
+}

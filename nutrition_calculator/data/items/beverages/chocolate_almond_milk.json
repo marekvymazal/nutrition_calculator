@@ -1,0 +1,13 @@
+{
+    "cost":{
+        "price":1.99,
+        "grams":946
+    },
+    "units":{
+        "cup":240
+    },
+    "names":[
+        "chocolate milk",
+        "chocolate almond milk"
+    ]
+}

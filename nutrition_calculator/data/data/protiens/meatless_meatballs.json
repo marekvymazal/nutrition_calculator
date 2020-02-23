@@ -1,0 +1,56 @@
+{
+    "name":"Meatless meatballs",
+    "userGenerated":"True",
+    "servingSize": 85,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 150,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 7.0,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 0.5,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 470.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 7.0,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 2.0,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 1.0,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 14.0,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 6.0,
+            "unit": "percentage"
+        },
+        "iron": {
+            "value": 10.0,
+            "unit": "percentage"
+        }
+    }
+}

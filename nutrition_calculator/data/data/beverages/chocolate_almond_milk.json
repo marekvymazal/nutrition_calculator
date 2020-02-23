@@ -1,0 +1,99 @@
+{
+    "name": "Chocolate almond milk",
+    "servingSize": 240.0,
+    "servingSizeUnit": "ml",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 100.0,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 2.5,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "polyunsaturatedFat": {
+            "value": 0.5,
+            "unit": "g"
+        },
+        "monounsaturatedFat": {
+            "value": 1.5,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 150.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 19.0,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 1.0,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 18.0,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 1.0,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 45.0,
+            "unit": "percentage"
+        },
+        "iron": {
+            "value": 6.0,
+            "unit": "percentage"
+        },
+        "vitaminD": {
+            "value": 25.0,
+            "unit": "percentage"
+        },
+        "vitaminA": {
+            "value": 10.0,
+            "unit": "percentage"
+        },
+        "vitaminE": {
+            "value": 50.0,
+            "unit": "percentage"
+        },
+        "riboflavin": {
+            "value": 2.0,
+            "unit": "percentage"
+        },
+        "phosporus": {
+            "value": 4.0,
+            "unit": "percentage"
+        },
+        "magnesium": {
+            "value": 6.0,
+            "unit": "percentage"
+        },
+        "zinc": {
+            "value": 2.0,
+            "unit": "percentage"
+        },
+        "copper": {
+            "value": 6.0,
+            "unit": "percentage"
+        },
+        "manganese": {
+            "value": 5.0,
+            "unit": "percentage"
+        }
+    }
+}

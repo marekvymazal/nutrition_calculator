@@ -1,0 +1,60 @@
+{
+    "name":"Shredded cheese",
+    "userGenerated":"True",
+    "servingSize": 28,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 70,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 4.0,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 0.5,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "polyunsaturatedFat": {
+            "value": 1.0,
+            "unit": "g"
+        },
+        "monosaturatedFat": {
+            "value": 2.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 210.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 3.0,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 1.0,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 6.0,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 20.0,
+            "unit": "percentage"
+        }
+    }
+}

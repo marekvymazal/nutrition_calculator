@@ -19,6 +19,7 @@ from .data_object import DataObject
 from .ingredient import Ingredient
 from .predictor import Predictor
 
+from fractions import Fraction
 
 class Recipe(DataObject):
 
@@ -55,8 +56,7 @@ class Recipe(DataObject):
                 break
 
             # get amount
-            amount = words[0]
-            words.pop(0)
+            amount, words = self.get_amount( words )
 
             # find unit
             unit = None
@@ -85,7 +85,10 @@ class Recipe(DataObject):
                 name = '_'.join(words).lower()
                 potential_names.append(name)
 
-            #print(potential_names)
+            if NC.debug:
+                print("  potential_names")
+                for pn in potential_names:
+                    print("    " + pn)
 
             name, relpath = NC.find_item( potential_names )
 
@@ -126,3 +129,31 @@ class Recipe(DataObject):
 
         self.print()
         print('')
+
+
+    def get_amount( self, words):
+
+        amount = 0
+        x = 0
+        while x < len(words):
+            try:
+                val = float(words[x])
+                amount += val
+                words.pop(x)
+                continue
+            except Exception as e:
+                pass
+
+            if '/' in words[x]:
+                vals = words[x].split('/')
+                if len(vals) == 2:
+                    try:
+                        amount += float( vals[0] ) / float( vals[1] )
+                        words.pop(x)
+                        continue
+                    except:
+                        pass
+
+            x += 1
+
+        return amount, words

@@ -1,0 +1,60 @@
+{
+    "name":"Ciabatta rolls",
+    "userGenerated":"True",
+    "servingSize": 100,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 250,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 1.5,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 730.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 41.0,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 2.0,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 8.0,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 2.0,
+            "unit": "percentage"
+        },
+        "iron": {
+            "value": 20.0,
+            "unit": "percentage"
+        },
+        "potassium": {
+            "value": 2.0,
+            "unit": "percentage"
+        }
+    }
+}
