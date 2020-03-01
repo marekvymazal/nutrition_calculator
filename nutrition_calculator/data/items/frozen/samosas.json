@@ -1,0 +1,15 @@
+{
+    "cost":{
+        "price":3.49,
+        "grams":240
+    },
+    "units":{
+        "default":240,
+        "container":240,
+        "package":240
+    },
+    "names":[
+        "samosas",
+        "vegetable samosas"
+    ]
+}

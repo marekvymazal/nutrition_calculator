@@ -1,0 +1,14 @@
+{
+    "cost":{
+        "price":3.69,
+        "grams":269
+    },
+    "units":{
+        "default":269,
+        "container":269,
+        "package":269
+    },
+    "names":[
+        "tikka masala"
+    ]
+}

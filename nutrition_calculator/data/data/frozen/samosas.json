@@ -1,0 +1,64 @@
+{
+    "name":"Vegetable Samosas",
+    "userGenerated":"True",
+    "servingSize": 240.0,
+    "servingSizeUnit": "g",
+    "nutrientsPerServing": {
+        "calories": {
+            "value": 480,
+            "unit": "kcal"
+        },
+        "fat": {
+            "value": 22.0,
+            "unit": "g"
+        },
+        "saturatedFat": {
+            "value": 1.5,
+            "unit": "g"
+        },
+        "transFat": {
+            "value": 0.0,
+            "unit": "g"
+        },
+        "cholesterol": {
+            "value": 0.0,
+            "unit": "mg"
+        },
+        "sodium": {
+            "value": 790.0,
+            "unit": "mg"
+        },
+        "carbohydrates": {
+            "value": 61.0,
+            "unit": "g"
+        },
+        "fiber": {
+            "value": 6.0,
+            "unit": "g"
+        },
+        "sugars": {
+            "value": 1.0,
+            "unit": "g"
+        },
+        "protein": {
+            "value": 13.0,
+            "unit": "g"
+        },
+        "calcium": {
+            "value": 4.0,
+            "unit": "percentage"
+        },
+        "iron": {
+            "value": 20.0,
+            "unit": "percentage"
+        },
+        "potassium": {
+            "value": 8.0,
+            "unit": "percentage"
+        },
+        "vitaminD": {
+            "value": 6.0,
+            "unit": "percentage"
+        }
+    }
+}
